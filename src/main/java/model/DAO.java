@@ -81,6 +81,14 @@ public class DAO {
 		}
 		return result;
 	}
-
-
+        public int getCustomerID(String email) throws SQLException {
+                int result = 0;
+                String sql = "SELECT CUSTOMER_ID FROM CUSTOMER WHERE EMAIL = ?";
+		try (Connection connection = myDataSource.getConnection(); 
+		     PreparedStatement stmt = connection.prepareStatement(sql)) {
+			ResultSet rs = stmt.executeQuery();
+			result = rs.getInt("CUSTOMER_ID");
+		}
+		return result;
+        }
 }
