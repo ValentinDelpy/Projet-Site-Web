@@ -36,7 +36,7 @@ public class ApplicationListener implements ServletContextListener {
 	private boolean databaseExists() {
 		boolean result = false;
 
-		DAO dao = new DAO(DataSourceFactory.getDataSource());
+		DAO dao = new DAO();
 		try {
 			List<DiscountCode> allCodes = dao.allCodes();
 			Logger.getLogger("DiscountEditor").log(Level.INFO, "Database already exists");
