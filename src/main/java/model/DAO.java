@@ -18,8 +18,8 @@ public class DAO {
      *
      * @param dataSource la source de données à utiliser
      */
-    public DAO(DataSource dataSource) {
-        this.myDataSource = dataSource;
+    public DAO() {
+        this.myDataSource = DataSourceFactory.getDataSource();
     }
 
     /**
@@ -226,4 +226,58 @@ public class DAO {
         }
         return c;
     }
+    
+   public double price(int id, int product_id, int quantity) throws SQLException {
+        double result = 0;
+        String sql = "SELECT PURCHASE_COST FROM PRODUCT WHERE PRODUCT_ID = ?";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, product_id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result = (rs.getDouble("PURCHASE_COST") * quantity) * ((100 - customerRate(id)) / 100);
+            }
+        }
+        return result;
+    }
+   
+    public int generateOrderNum() throws SQLException{
+        int ret = 0;
+        String sql = "SELECT MAX(ORDER_NUM) FROM PURCHASE_ORDER";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+            ret = rs.getInt("ORDER_NUM") + 1;
+        }
+        return ret;
+    }
+    
+    public boolean checkBuying(int id, int product_id, int quantity) throws SQLException{
+        boolean ret = false;
+        double solde = this.soldeClient(id);
+        if(solde > price(id,product_id,quantity)){
+            ret = true;
+        }
+        return ret;
+    }
+    //Permet de créer une commande.
+    public int addPurchaseOrder(int id, int product_id, int quantity) throws SQLException{
+        int ret = 0;
+        String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, SHIPPING_DATE) VALUES (?, ?, ?, ?, ?)";
+        if(checkBuying(id,product_id,quantity)==true){
+                try(Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)){
+                    stmt.setInt(1,generateOrderNum());
+                    stmt.setInt(2,id);
+                    stmt.setInt(3,product_id);
+                    stmt.setInt(4, quantity);
+                    stmt.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+                    ret = stmt.executeUpdate();
+        }    
+        }else{
+            throw new SQLException("Pas assez d'argent sur votre compte. L'achat coûte "+price(id,product_id,quantity)+" euros. Vous disposez de "+soldeClient(id)+" euros.");
+        }
+        return ret;
+    }
+    
 }
