@@ -67,8 +67,9 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-    public Customer(){
-        
+    
+    public Customer(String email){
+        this.email = email;
     }
 
     public String getEmail() {

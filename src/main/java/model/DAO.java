@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.sql.DataSource;
@@ -71,7 +72,7 @@ public class DAO {
      * @param code la clé de l'enregistrement à supprimer
      * @return le nombre d'enregistrements supprimés (1 ou 0)
      * @throws java.sql.SQLException renvoyées par JDBC
-	 *
+     *
      */
     public int deleteDiscountCode(String code) throws SQLException {
         int result = 0;
@@ -89,6 +90,7 @@ public class DAO {
         String sql = "SELECT CUSTOMER_ID FROM CUSTOMER WHERE EMAIL = ?";
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
             result = rs.getInt("CUSTOMER_ID");
         }
@@ -110,7 +112,7 @@ public class DAO {
         }
         return ret;
     }
-    
+
     //Permet de définir le montant d'argent sur le compte d'un client.
     public int addMoney(int id, double montant) throws SQLException {
         int ret = 0;
@@ -124,7 +126,7 @@ public class DAO {
         }
         return ret;
     }
-    
+
     //Permet de mettre à jour le montant d'argent sur le compte d'un client.
     public int substractMoney(int id, double price) throws SQLException {
         int ret = 0;
@@ -137,5 +139,91 @@ public class DAO {
         }
         return ret;
     }
-    
+
+    public List<Product> allProducts() throws SQLException {
+        ArrayList<Product> myProducts = new ArrayList<>();
+        String sql = "SELECT * FROM PRODUCT";
+        try (
+                Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("PRODUCT_ID");
+                String descr = rs.getString("DESCRIPTION");
+                int price = rs.getInt("PURCHASE_COST");
+                Product p = new Product(id);
+                p.setDescription(descr);
+                p.setPurchaseCost(price);
+                myProducts.add(p);
+            }
+        }
+        return myProducts;
+    }
+
+    //Récupère le taux de réduction d'un customer en fonction de son identifiant.
+    public double customerRate(int customer_ID) throws SQLException {
+        double ret = 0;
+        String sql = "SELECT RATE FROM DISCOUNT_CODE INNER JOIN CUSTOMER ON CUSTOMER.DISCOUNT_CODE = DISCOUNT_CODE.DISCOUNT_CODE WHERE CUSTOMER_ID = ?";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, customer_ID);
+            ResultSet rs = stmt.executeQuery();
+            ret = rs.getDouble("RATE");
+        }
+        return ret;
+    }
+
+    //Retourne la liste de tous les clients.
+    public List<Customer> allCustomers() throws SQLException {
+        ArrayList<Customer> myCustomers = new ArrayList<>();
+        String sql = "SELECT * FROM CUSTOMER";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.next()) {
+                Customer c = new Customer("NaN");
+                c.setEmail("NaN");
+                c.setPassword("NaN");
+                c.setName("NaN");
+                myCustomers.add(c);
+            } else {
+                while (rs.next()) {
+                    String email = rs.getString("EMAIL");
+                    Customer c = new Customer(email);
+                    c.setCity(rs.getString("CITY"));
+                    c.setCredit(rs.getInt("CREDIT_LIMIT"));
+                    c.setName(rs.getString("NAME"));
+                    c.setAddressline1(rs.getString("ADDRESSLINE1"));
+                    c.setState(rs.getString("STATE"));
+                    c.setPassword(String.valueOf(rs.getInt("CUSTOMER_ID")));
+                    myCustomers.add(c);
+                }
+            }
+        }
+        return myCustomers;
+    }
+
+    //Retourne toutes les infos d'un customer, en fonction de son adresse mail.
+    public Customer selectClientByID(String email) throws SQLException {
+        Customer c = new Customer(email);
+        String sql = "SELECT * FROM CUSTOMER WHERE EMAIL = ?";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.next()) {
+                c.setEmail("NaN");
+                c.setPassword("NaN");
+                c.setName("NaN");
+            } else {
+                c.setCity(rs.getString("CITY"));
+                c.setCredit(rs.getInt("CREDIT_LIMIT"));
+                c.setName(rs.getString("NAME"));
+                c.setAddressline1(rs.getString("ADDRESSLINE1"));
+                c.setState(rs.getString("STATE"));
+                c.setPassword(String.valueOf(rs.getInt("CUSTOMER_ID")));
+            }
+        }
+        return c;
+    }
 }
