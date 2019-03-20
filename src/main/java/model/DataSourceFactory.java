@@ -4,7 +4,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author rbastide
+ * @author Soul
  */
 public class DataSourceFactory {
 

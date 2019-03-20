@@ -2,7 +2,7 @@ package model;
 
 /**
  * Un enregistrement de la table DISCOUNT_CODE
- * @author rbastide
+ * @author Soul
  */
 public class DiscountCode {
 
@@ -23,5 +23,9 @@ public class DiscountCode {
 	public float getRate() {
 		return rate;
 	}
-
+        
+        @Override
+        public String toString(){
+            return ""+this.discountCode;
+        }
 }
