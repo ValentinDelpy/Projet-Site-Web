@@ -280,4 +280,26 @@ public class DAO {
         return ret;
     }
     
+    public int deletePurchaseOrder(int purchase_id) throws SQLException{
+        int ret =0;
+        String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
+        try(Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)){
+                stmt.setInt(1,purchase_id);
+                ret = stmt.executeUpdate();
+        }
+        return ret;
+    }
+    
+    public int getProductIDByOrderNum(int order_num) throws SQLException{
+        int ret = 0;
+        String sql = "SELECT PRODUCT_ID FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
+        try(Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setInt(1, order_num);
+            ResultSet rs = stmt.executeQuery();
+            ret = rs.getInt("PRODUCT_ID");
+        }
+        return ret;
+    }
 }
