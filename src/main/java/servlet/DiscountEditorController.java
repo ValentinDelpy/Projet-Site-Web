@@ -35,7 +35,7 @@ public class DiscountEditorController extends HttpServlet {
 		String code = request.getParameter("code");
 		String taux = request.getParameter("taux");
 		try {
-			DAO dao = new DAO(DataSourceFactory.getDataSource());
+			DAO dao = new DAO();
 			request.setAttribute("codes", dao.allCodes());			
 			switch (action) {
 				case "ADD": // Requête d'ajout (vient du formulaire de saisie)
