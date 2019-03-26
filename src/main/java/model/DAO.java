@@ -159,6 +159,21 @@ public class DAO {
         }
         return myProducts;
     }
+    
+        public ArrayList<String> productsDesc() throws SQLException {
+        ArrayList<String> result = new ArrayList<>();
+        String sql = "SELECT DESCRIPTION FROM PRODUCT WHERE QUANTITY_ON_HAND > 0";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String des = rs.getString("DESCRIPTION");
+                result.add(des);
+            }
+        }
+        return result;
+    }
 
     //Récupère le taux de réduction d'un customer en fonction de son identifiant.
     public double customerRate(int customer_ID) throws SQLException {
@@ -204,7 +219,7 @@ public class DAO {
     }
 
     //Retourne toutes les infos d'un customer, en fonction de son adresse mail.
-    public Customer selectClientByID(String email) throws SQLException {
+    public Customer selectCustomerByMail(String email) throws SQLException {
         Customer c = new Customer(email);
         String sql = "SELECT * FROM CUSTOMER WHERE EMAIL = ?";
         try (Connection connection = myDataSource.getConnection();
