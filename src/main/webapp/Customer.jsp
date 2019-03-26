@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <form>
         <h1>Hello World!je suis une victime</h1>
+         </form>
     </body>
 </html>

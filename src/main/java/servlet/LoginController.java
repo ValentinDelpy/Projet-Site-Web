@@ -97,8 +97,8 @@ public class LoginController extends HttpServlet {
         DAO dao = new DAO();
 
         // Les paramètres transmis dans la requête
-        String loginParam = request.getParameter("loginParam");
-        String passwordParam = request.getParameter("passwordParam");
+        String loginParam = request.getParameter("uname");
+        String passwordParam = request.getParameter("psw");
 
         // on va d'abord vérifier si c'est un admin qui tente de se connecter
         if ((loginParam.equals("admin@admin") && (passwordParam.equals("admin")))) {
