@@ -1,5 +1,12 @@
-C:\Users\Soul\Documents\NetBeansProjects\edition-discount\src\main\java\model\DAO.java
-C:\Users\Soul\Documents\NetBeansProjects\edition-discount\src\main\java\model\DiscountCode.java
-C:\Users\Soul\Documents\NetBeansProjects\edition-discount\src\main\java\model\DataSourceFactory.java
-C:\Users\Soul\Documents\NetBeansProjects\edition-discount\src\main\java\servlet\DiscountEditorController.java
-C:\Users\Soul\Documents\NetBeansProjects\edition-discount\src\main\java\servlet\ApplicationListener.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\DAO.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\DataSourceFactory.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\servlet\ApplicationListener.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\DiscountCode.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\ProductCode.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\Manufacturer.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\servlet\DiscountEditorController.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\Customer.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\MicroMarket.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\Product.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\model\PurchaseOrder.java
+C:\Users\Soul\Documents\NetBeansProjects\Projet-Site-Web\src\main\java\servlet\LoginController.java
