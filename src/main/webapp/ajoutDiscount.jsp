@@ -6,8 +6,8 @@
 <html>
 <head>
 	<title>Webmarket : connexion</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="ressources/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -26,6 +26,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
+    <section class="connexion container  z-depth-4">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -33,13 +34,13 @@
 					<img src="ressources/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="<c:url value="LoginController" />" method="POST">
+				<form class="col s12 login-form" action="<c:url value="LoginController" />" method="POST">
 					<span class="login100-form-title">
 						Espace de connexion
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Précisez un email valide : ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Adresse mail" name="uname" required>
+						<input class="input100" type="text"  placeholder="Adresse mail" name="uname" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -47,7 +48,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Un mot de passe est requis.">
-						<input class="input100" type="password" name="pass" placeholder="Mot de passe"  name="psw" required>
+						<input class="input100" type="password"  placeholder="Mot de passe"  name="psw" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -55,7 +56,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" name="action" value="login">
 							Se connecter
 						</button>
 					</div>
@@ -82,6 +83,6 @@
 		})
 	</script>
 <!--===============================================================================================-->
-
+</section>
 </body>
 </html>
