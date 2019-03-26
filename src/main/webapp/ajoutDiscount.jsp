@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="resources/css/style_log.css">
+        <link rel="stylesheet" href="ressources/css/style_log.css">
         <!--<meta name="viewport" content="width=device-width, initial-scale=1">
         -->
         <meta charset="utf-8">
@@ -19,7 +19,7 @@
         <form class="col s12 login-form" action="<c:url value="LoginController" />" method="POST">
             <h2>Login</h2>
             <div class="imgcontainer">
-                <img src="avatar.jpg" alt="Avatar" class="avatar">
+                <img src="assets/avatar.jpg" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
