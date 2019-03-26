@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Customer
-    Created on : 20 mars 2019, 11:49:55
+    Document   : admin
+    Created on : 26 mars 2019, 13:13:29
     Author     : Mark
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!je suis une victime</h1>
+        <h1>Hello World! je suis admin</h1>
     </body>
 </html>

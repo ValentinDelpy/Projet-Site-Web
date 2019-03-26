@@ -50,11 +50,11 @@ public class LoginController extends HttpServlet {
 		if (null == userName) { 
 // L'utilisateur n'est pas connecté
 			// On choisit la page de login
-			jspView = "login.jsp";
+			jspView = "ajoutDiscount.jsp";
 
 		} else if(!"admin".equals(userName)){ // L'utilisateur est connecté
 			// On choisit la page d'affichage
-			jspView = "WEB-INF/customer.jsp";
+			jspView = "WEB-INF/Customer.jsp";
 		}
                 
                 else if ("admin".equals(userName)){
@@ -73,7 +73,7 @@ public class LoginController extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
-	private void checkLogin(HttpServletRequest request) {
+	private void checkLogin(HttpServletRequest request) throws SQLException {
             
                 // on va créer un DAO pour pouvoir intéragir avec la bdd
                 DAO dao = new DAO();
@@ -91,5 +91,57 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("userName", "admin");
 		}
                 
+                else if(!"".equals(loginParam) && !"".equals(passwordParam)){
+                   Customer c = dao.selectCustomerByMail(loginParam);
+               // Le login/password défini dans les propiétés du customer
+                   String login = c.getEmail();
+                   String password = c.getPassword();
+                   String userName = c.getName();
+                   String phone = c.getPhone();
+                   String address = c.getAddressline1();
+                   
+                   // si le mail et le mdp correspondent alors on peut se connecter
+                    if ((login.equals(loginParam) && (password.equals(passwordParam)))) {
+			// On a trouvé la combinaison login / password
+			// On stocke l'information dans la session
+			HttpSession session = request.getSession(true); // démarre la session
+			session.setAttribute("userName", userName);
+                        session.setAttribute("userEmail", login);
+                        session.setAttribute("userPassword", password);
+                        session.setAttribute("userAddress", address);
+                        session.setAttribute("userPhone", phone);
+                        //session.setAttribute("commandes", dao.customerCommandes(c));  
+                        //ArrayList<myProducts> des = dao.allProducts();
+                        //request.setAttribute("listeProduits", des);
+                        //Double solde = dao.soldeClient(Integer.parseInt(password));
+                        //session.setAttribute("solde", solde);
+                        //session.setAttribute("codes", viewCodes(request));
+                    }
+                    else if (login.equals("nodata")){
+                        request.setAttribute("errorMessage", "Login/Password incorrect");
+                    }
+                    else if ("".equals(loginParam) || "".equals(passwordParam)){ // On positionne un message d'erreur pour l'afficher dans la JSP
+                            request.setAttribute("errorMessage", "Login/Password incorrect");
+                    }
+                    
+                    
+                    else{
+                        request.setAttribute("errorMessage", "Login/Password incorrect");
+                    }
+                   
+                
+                }
         }
+        private void doLogout(HttpServletRequest request) {
+		// On termine la session
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+	}
+
+	private String findUserInSession(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		return (session == null) ? null : (String) session.getAttribute("userName");
+	}
         }
