@@ -56,7 +56,7 @@ public class LoginController extends HttpServlet {
             // On choisit la page d'affichage
             jspView = "Customer.jsp";
         } else if ("admin".equals(userName)) {
-            jspView = "admin.jsp";
+            jspView = "adminDashboard.jsp";
         }
         // On va vers la page choisie
         request.getRequestDispatcher(jspView).forward(request, response);
