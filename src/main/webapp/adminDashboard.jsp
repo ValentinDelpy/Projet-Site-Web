@@ -161,15 +161,152 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row">
-                                    <span class="row">
-                                        <div class="text-center">
-                                            <canvas id="graphique" width="1000" height="350"></canvas>
+
+
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+
+                                    <div class="header">
+                                        <h4 class="title">Chiffre d'affaire par Produit</h4>
+                                        <p class="category">Visualisez quelle produit a le plus grand chiffre d'affaire !</p>
+                                        <form method='POST' action="AdminController">
+                                            <input type="date" class="choixdate" name="date_debut">
+                                            <input type="date" class="choixdate" name="date_fin">
+                                            <input type="hidden" name="action" value="caByProduct">
+                                            <input type="submit" value="Envoyer">
+                                        </form>
+                                    </div>
+                                    <div class="content">
+                                        <canvas id="myChart"></canvas>
+
+                                        <div class="footer">
+
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-clock-o"></i> Etude très sérieuse réalisée d'après les achats de Sophie P. 
+                                            </div>
                                         </div>
-                                    </span>
-                                </div>     
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="header">
+                                        <h4 class="title">Chiffre d'affaire par Zone Géographique</h4>
+                                        <p class="category">Quelle zone vend le plus ?</p>
+                                    </div>
+                                    <div class="content">
+                                        <form method='POST' action="AdminController">
+                                            <input type="date" class="choixdate" name="date_debut_geo">
+                                            <input type="date" class="choixdate" name="date_fin_geo">
+                                            <input type="hidden" name="action" value="caByGeo">
+                                            <input type="submit" value="Envoyer">
+                                        </form>
+                                        <canvas id="chartGeo"></canvas>
+                                        <div class="footer">
+                                            <div class="legend">
+
+                                            </div>
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> Les chiffres sont ici marquants.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card ">
+                                    <div class="header">
+                                        <h4 class="title">Chiffre d'affaire par Client</h4>
+                                        <p class="category">Qui est le plus gros acheteur compulsif ?</p>
+                                        <form method='POST' action="AdminController">
+                                            <input type="date" class="choixdate" name="date_debut_cli">
+                                            <input type="date" class="choixdate" name="date_fin_cli">
+                                            <input type="hidden" name="action" value="caByCli">
+                                            <input type="submit" value="Envoyer">
+                                        </form>
+                                    </div>
+                                    <div class="content">
+                                        <canvas id="chartCli"></canvas>
+
+                                        <div class="footer">
+
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Villany, enseignant.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card ">
+                                    <div class="header">
+                                        <h4 class="title">Chiffre d'affaire par Catégorie d'article</h4>
+                                        <p class="category">Quel produit plaît le plus à Jasmine Ghozali ?</p>
+                                        <form method='POST' action="AdminController">
+                                            <input type="date" class="choixdate" name="date_debut_cat">
+                                            <input type="date" class="choixdate" name="date_fin_cat">
+                                            <input type="hidden" name="action" value="caByProductCode">
+                                            <input type="submit" value="Envoyer">
+                                        </form>
+                                    </div>
+                                    <div class="content">
+                                        <canvas id="chartCat"></canvas>
+
+                                        <div class="footer">
+
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Francis Faux, enseignant.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card ">
+                                    <div class="header">
+                                        <h4 class="title">Chiffre d'affaire par ZIP (Code postal)</h4>
+                                        <p class="category">Quel "Plan d'Amélioration du Découpage en Zone" possède le meilleur CA ?</p>
+                                        <form method='POST' action="AdminController">
+                                            <input type="date" class="choixdate" name="date_debut_zip">
+                                            <input type="date" class="choixdate" name="date_fin_zip">
+                                            <input type="hidden" name="action" value="caByZip">
+                                            <input type="submit" value="Envoyer">
+                                        </form>
+                                    </div>
+                                    <div class="content">
+                                        <canvas id="chartZip"></canvas>
+
+                                        <div class="footer">
+
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Regner, enseignant.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                         </div>
                     </div>
                 </div>
@@ -190,34 +327,162 @@
         </div>
     </body>
     <script src="path/to/chartjs/dist/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
-        var chartdata = {
-            labels: ["2016-02-29 11:02:06", "2016-02-29 12:01:54", "2016-02-29 13:02:09", "2016-02-29 14:02:10", "2016-02-29 15:02:08", "2016-02-29 16:02:10", "2016-02-29 17:02:09"],
-            datasets: [{
-                    fillColor: "rgba(7,75,234,0.5)",
-                    strokeColor: "#074bea",
-                    pointColor: "#fff",
-                    pointStrokeColor: "#074bea",
-                    data: [0, 862, 1899, 2430, 2768, 2958, 3124]
-                },
-                {
-                    fillColor: "rgba(23,234,7,0.5)",
-                    strokeColor: "#17ea07",
-                    pointColor: "#fff",
-                    pointStrokeColor: "#17ea07",
-                    data: [0, 64, 128, 256, 512, 1024, 2048]
-                },
-                {
-                    fillColor: "rgba(231,26,13,0.75)",
-                    strokeColor: "#e71a0d",
-                    pointColor: "#fff",
-                    pointStrokeColor: "#e71a0d",
-                    data: [0, 4200, 3000, 2000, 200, 500, 5]
-                }
-            ]
-        }
-        var chart = document.getElementById('graphique').getContext('2d');
-        new Chart(chart).Line(chartdata);
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var label = [];
+        var titre = "CA par Produit en $ ${dateProcuct}"
+        var ca = [];
+        <c:forEach items="${productCA}" var="item" >
+        label.push("${item.key}");
+        </c:forEach>
+        <c:forEach items="${productCA}" var="item" >
+        ca.push(${item.value});
+        </c:forEach>
+        var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+
+            // The data for our dataset
+            data: {
+                labels: label,
+                datasets: [{
+                        label: "CA par Produit en $, ${dateProduct}.",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: ca,
+                    }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('chartGeo').getContext('2d');
+        var label = [];
+        var ca = [];
+        <c:forEach items="${geoCA}" var="item" >
+        label.push("${item.key}");
+        </c:forEach>
+        <c:forEach items="${geoCA}" var="item" >
+        ca.push(${item.value});
+        </c:forEach>
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+                labels: label,
+                datasets: [{
+                        label: "CA par zone Géographique en $, ${dateGeo}",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: ca,
+                    }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('chartCli').getContext('2d');
+        var label = [];
+        var ca = [];
+        <c:forEach items="${cliCA}" var="item" >
+        label.push("${item.key}");
+        </c:forEach>
+        <c:forEach items="${cliCA}" var="item" >
+        ca.push(${item.value});
+        </c:forEach>
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+                labels: label,
+                datasets: [{
+                        label: "CA par Client en $, ${dateCli}",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: ca,
+                    }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('chartCat').getContext('2d');
+        var label = [];
+        var ca = [];
+        <c:forEach items="${productCodeCA}" var="item" >
+        label.push("${item.key}");
+        </c:forEach>
+        <c:forEach items="${productCodeCA}" var="item" >
+        ca.push(${item.value});
+        </c:forEach>
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+
+            // The data for our dataset
+            data: {
+                labels: label,
+                datasets: [{
+                        label: "CA par catégorie d'article en $, ${dateProductCode}",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: ca,
+                    }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('chartZip').getContext('2d');
+        var label = [];
+        var ca = [];
+        <c:forEach items="${zipCA}" var="item" >
+        label.push("${item.key}");
+        </c:forEach>
+        <c:forEach items="${zipCA}" var="item" >
+        ca.push(${item.value});
+        </c:forEach>
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+
+            // The data for our dataset
+            data: {
+                labels: label,
+                datasets: [{
+                           label: "CA par catégorie d'article en $, ${dateZip}",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: ca,
+                    }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
     </script>
 
 </html>
