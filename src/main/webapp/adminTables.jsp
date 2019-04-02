@@ -16,7 +16,7 @@
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="ressources/css/admin.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -35,18 +35,18 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="./adminDashboard.jsp">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
             <li class="nav-item active">
-              <a class="nav-link" href="./tables.html">
+              <a class="nav-link" href="#0">
                 <i class="material-icons">content_paste</i>
                 <p>Table List</p>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="./tables.html">
+              <a class="nav-link" href="./ajoutDiscount.jsp">
                 <i class="material-icons">eject</i>
                 <p>Disconnect</p>
               </a>
