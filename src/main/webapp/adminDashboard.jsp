@@ -88,11 +88,10 @@
                                                     <i class="material-icons">euro_symbol</i>
                                                 </div>
                                                 <p class="card-category">Bénéfice</p>
-                                                <h3 class="card-title">                                                    
-                                                    <% DAO dao = new DAO();
-                                                    out.println(dao.benefice());%>
+                                                <h3 class="card-title"><% DAO dao = new DAO();out.println(dao.benefice());%>                                                    
                                                     <small>euros</small>
                                                 </h3>
+                                                
                                             </div>
                                             <div class="card-footer">
                                                 <div class="stats">
@@ -167,7 +166,7 @@
                         <nav class="float-left">
                             <ul>
                                 <li>
-                                    <a href="https://www.creative-tim.com">
+                                    <a href='https://github.com/ValentinDelpy/Projet-Site-Web'>
                                         Curt Bryan - Delpy Valentin - Goncalves de Carvalho Amaury
                                     </a>
                                 </li>
