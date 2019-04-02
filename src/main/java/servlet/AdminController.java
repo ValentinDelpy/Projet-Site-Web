@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -71,7 +71,7 @@ public class AdminController extends HttpServlet {
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                     break;
                 case "caByGeo":
-                    session.setAttribute("geoCA", dao.chiffreAffaireByState(date_debut_geo, date_fin_geo));
+//                    session.setAttribute("geoCA", dao.chiffreAffaireByState(date_debut_geo, date_fin_geo));
                     session.setAttribute("dateGeo", "du " + date_debut_geo + " au " + date_fin_geo);
 
                     request.getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);

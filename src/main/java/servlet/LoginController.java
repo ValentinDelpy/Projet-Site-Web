@@ -79,7 +79,7 @@ public class LoginController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            System.out.println("bug");;
+            System.out.println("bug");
         }
     }
 
@@ -100,6 +100,7 @@ public class LoginController extends HttpServlet {
         // Les paramètres transmis dans la requête
         String loginParam = request.getParameter("uname");
         String passwordParam = request.getParameter("psw");
+        System.out.println(passwordParam);
 
         // on va d'abord vérifier si c'est un admin qui tente de se connecter
         if ((loginParam.equals("admin@admin") && (passwordParam.equals("admin")))) {
@@ -126,12 +127,12 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userPassword", password);
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
-                session.setAttribute("commandes", dao.customerCommandes(c));  
-                List<Product> des = dao.allProducts();
-                request.setAttribute("listeProduits", des);
-                Double solde = dao.soldeClient(Integer.parseInt(password));
-                session.setAttribute("solde", solde);
-                session.setAttribute("codes", viewCodes(request));
+                //session.setAttribute("commandes", dao.customerCommandes(c));  
+                //List<Product> des = dao.allProducts();
+                //request.setAttribute("listeProduits", des);
+                //Double solde = dao.soldeClient(Integer.parseInt(password));
+                //session.setAttribute("solde", solde);
+                //session.setAttribute("codes", viewCodes(request));
             } else if (login.equals("nodata")) {
                 request.setAttribute("errorMessage", "Login/Password incorrect");
             } else if ("".equals(loginParam) || "".equals(passwordParam)) { // On positionne un message d'erreur pour l'afficher dans la JSP
@@ -156,26 +157,5 @@ public class LoginController extends HttpServlet {
         return (session == null) ? null : (String) session.getAttribute("userName");
     }
     
-             public List<PurchaseOrder> viewCommandes(HttpServletRequest request) throws SQLException {
-            List<PurchaseOrder> result = new LinkedList<>();
-            DAO dao= new DAO();
-            HttpSession session = request.getSession();
-            String password = ((String)session.getAttribute("userPassword"));
-            Customer c = new Customer();
-            c.setPassword(password);
-            result = dao.customerCommandes(c);                    
-            return result;
-         }
-             
-        public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
-            List<DiscountCode> result = new LinkedList<>();
-            DAO dao= new DAO();
-            HttpSession session = request.getSession();
-            String password = ((String)session.getAttribute("userPassword"));
-            Customer c = new Customer();
-            c.setPassword(password);
-            result = dao.customerCodes(c);         
-            
-            return result;
-    }
+
 }

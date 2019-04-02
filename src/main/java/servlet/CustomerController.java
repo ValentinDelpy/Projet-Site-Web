@@ -110,7 +110,7 @@ public class CustomerController extends HttpServlet {
                 case "DO_VIREMENT":
                     try {
                         int montant = Integer.parseInt(request.getParameter("montant"));
-                        dao.virement(Integer.parseInt(password), montant);
+                        dao.addMoney(Integer.parseInt(password), montant);
                         solde = dao.soldeClient(Integer.parseInt(password));
                         session.setAttribute("solde", solde);
                         request.setAttribute("message", "Virement de : " + montant + "$ réalisé sur votre compte.");
