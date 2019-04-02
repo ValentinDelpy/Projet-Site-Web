@@ -256,7 +256,20 @@ public class DAO {
         }
         return result;
     }
-
+    
+    public double benefice() throws SQLException {
+        double result = 0;
+        String sql ="SELECT * FROM PURCHASE_ORDER INNER JOIN PRODUCT ON PRODUCT.PRODUCT_ID = PURCHASE_ORDER.PRODUCT_ID";
+        try(Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                result = result + rs.getDouble("PURCHASE_COST")*rs.getInt("QUANTITY");
+            }
+        }
+        return result;
+    }
+    
     public int generateOrderNum() throws SQLException {
         int ret = 0;
         String sql = "SELECT MAX(ORDER_NUM) FROM PURCHASE_ORDER";
