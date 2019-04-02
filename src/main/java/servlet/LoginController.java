@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import model.Customer;
 import model.DAO;
 import model.DiscountCode;
+import model.Product;
 import model.PurchaseOrder;
 
 public class LoginController extends HttpServlet {
@@ -95,7 +96,7 @@ public class LoginController extends HttpServlet {
 
         // on va créer un DAO pour pouvoir intéragir avec la bdd
         DAO dao = new DAO();
-
+        CustomerController cc = new CustomerController();
         // Les paramètres transmis dans la requête
         String loginParam = request.getParameter("uname");
         String passwordParam = request.getParameter("psw");
@@ -125,12 +126,12 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userPassword", password);
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
-                //session.setAttribute("commandes", dao.customerCommandes(c));  
-                //ArrayList<myProducts> des = dao.allProducts();
-                //request.setAttribute("listeProduits", des);
-                //Double solde = dao.soldeClient(Integer.parseInt(password));
-                //session.setAttribute("solde", solde);
-                //session.setAttribute("codes", viewCodes(request));
+                session.setAttribute("commandes", dao.customerCommandes(c));  
+                List<Product> des = dao.allProducts();
+                request.setAttribute("listeProduits", des);
+                Double solde = dao.soldeClient(Integer.parseInt(password));
+                session.setAttribute("solde", solde);
+                session.setAttribute("codes", viewCodes(request));
             } else if (login.equals("nodata")) {
                 request.setAttribute("errorMessage", "Login/Password incorrect");
             } else if ("".equals(loginParam) || "".equals(passwordParam)) { // On positionne un message d'erreur pour l'afficher dans la JSP
@@ -154,5 +155,27 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession(false);
         return (session == null) ? null : (String) session.getAttribute("userName");
     }
-
+    
+             public List<PurchaseOrder> viewCommandes(HttpServletRequest request) throws SQLException {
+            List<PurchaseOrder> result = new LinkedList<>();
+            DAO dao= new DAO();
+            HttpSession session = request.getSession();
+            String password = ((String)session.getAttribute("userPassword"));
+            Customer c = new Customer();
+            c.setPassword(password);
+            result = dao.customerCommandes(c);                    
+            return result;
+         }
+             
+        public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
+            List<DiscountCode> result = new LinkedList<>();
+            DAO dao= new DAO();
+            HttpSession session = request.getSession();
+            String password = ((String)session.getAttribute("userPassword"));
+            Customer c = new Customer();
+            c.setPassword(password);
+            result = dao.customerCodes(c);         
+            
+            return result;
+    }
 }

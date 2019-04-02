@@ -19,6 +19,10 @@ public class Customer {
     public String addressline1;
     public int credit;
 
+    public Customer() {
+       
+    }
+
     public String getState() {
         return state;
     }
