@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import javax.sql.DataSource;
 
 public class DAO {
@@ -307,6 +311,7 @@ public class DAO {
         }
         return result;
     }
+            
     public int generateOrderNum() throws SQLException {
         int ret = 0;
         String sql = "SELECT MAX(ORDER_NUM) FROM PURCHASE_ORDER";
@@ -560,5 +565,67 @@ public class DAO {
         }
 
         return result;
+    }
+        public double getCost(int product_id) throws SQLException {
+        double result = 0;
+        String sql = "SELECT PURCHASE_COST FROM PRODUCT WHERE PRODUCT_ID = ?";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, product_id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+
+                result = rs.getDouble("PURCHASE_COST");
+            }
+        }
+        return result;
+    }
+    
+        public Map<String, Double> chiffreAffaireByState(String deb, String fin) throws SQLException {
+        Map<String, Double> ret = new HashMap<>();
+        String sql = "SELECT PRODUCT_ID, CUSTOMER_ID, QUANTITY, STATE FROM PURCHASE_ORDER"
+                + " INNER JOIN CUSTOMER"
+                + " USING (CUSTOMER_ID)"
+                + " WHERE SHIPPING_DATE BETWEEN ? AND ?";
+
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsed1 = null;
+            Date parsed2 = null;
+            try {
+                parsed1 = sdf.parse(deb);
+            } catch (ParseException e1) {
+                // TODO Auto-generated catch block
+
+            }
+            try {
+                parsed2 = sdf.parse(fin);
+            } catch (ParseException e2) {
+                // TODO Auto-generated catch block
+                e2.printStackTrace();
+            }
+            java.sql.Date data1 = new java.sql.Date(parsed1.getTime());
+            java.sql.Date data2 = new java.sql.Date(parsed2.getTime());
+
+            stmt.setDate(1, data1);
+            stmt.setDate(2, data2);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String state = rs.getString("STATE");
+                double price = rs.getDouble("QUANTITY") * getCost(rs.getInt("PRODUCT_ID"));
+                if (ret.containsKey(state)) {
+                    ret.put(state, ret.get(state) + price);
+                    System.out.println("nouveau ca  " + state + " est de " + ret.get(state));
+                } else {
+                    ret.put(state, price);
+                    System.out.println("ca = " + state + " est de " + price);
+                }
+
+            }
+        }
+
+        return ret;
     }
 }

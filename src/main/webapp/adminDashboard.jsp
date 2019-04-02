@@ -20,7 +20,7 @@
             <div class="sidebar" data-color="purple" data-background-color="white">
                 <!--
                 Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-          
+
                 Tip 2: you can also add an image using data-image tag
                 -->
                 <div class="logo">
@@ -90,7 +90,7 @@
                                                 <p class="card-category">Bénéfice</p>
                                                 <h3 class="card-title">                                                    
                                                     <% DAO dao = new DAO();
-                                                    out.println(dao.benefice());%>
+                                                        out.println(dao.benefice());%>
                                                     <small>euros</small>
                                                 </h3>
                                             </div>
@@ -159,6 +159,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="container">
+                                <div class="row">
+                                    <span class="row">
+                                        <div class="text-center">
+                                            <canvas id="graphique" width="1000" height="350"></canvas>
+                                        </div>
+                                    </span>
+                                </div>     
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,5 +189,35 @@
             </div>
         </div>
     </body>
+    <script src="path/to/chartjs/dist/Chart.js"></script>
+    <script>
+        var chartdata = {
+            labels: ["2016-02-29 11:02:06", "2016-02-29 12:01:54", "2016-02-29 13:02:09", "2016-02-29 14:02:10", "2016-02-29 15:02:08", "2016-02-29 16:02:10", "2016-02-29 17:02:09"],
+            datasets: [{
+                    fillColor: "rgba(7,75,234,0.5)",
+                    strokeColor: "#074bea",
+                    pointColor: "#fff",
+                    pointStrokeColor: "#074bea",
+                    data: [0, 862, 1899, 2430, 2768, 2958, 3124]
+                },
+                {
+                    fillColor: "rgba(23,234,7,0.5)",
+                    strokeColor: "#17ea07",
+                    pointColor: "#fff",
+                    pointStrokeColor: "#17ea07",
+                    data: [0, 64, 128, 256, 512, 1024, 2048]
+                },
+                {
+                    fillColor: "rgba(231,26,13,0.75)",
+                    strokeColor: "#e71a0d",
+                    pointColor: "#fff",
+                    pointStrokeColor: "#e71a0d",
+                    data: [0, 4200, 3000, 2000, 200, 500, 5]
+                }
+            ]
+        }
+        var chart = document.getElementById('graphique').getContext('2d');
+        new Chart(chart).Line(chartdata);
+    </script>
 
 </html>
