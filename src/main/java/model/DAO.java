@@ -256,20 +256,57 @@ public class DAO {
         }
         return result;
     }
-    
+
     public double benefice() throws SQLException {
         double result = 0;
-        String sql ="SELECT * FROM PURCHASE_ORDER INNER JOIN PRODUCT ON PRODUCT.PRODUCT_ID = PURCHASE_ORDER.PRODUCT_ID";
-        try(Connection connection = myDataSource.getConnection();
-                PreparedStatement stmt = connection.prepareStatement(sql)){
+        String sql = "SELECT * FROM PURCHASE_ORDER INNER JOIN PRODUCT ON PRODUCT.PRODUCT_ID = PURCHASE_ORDER.PRODUCT_ID";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result = result + rs.getDouble("PURCHASE_COST") * rs.getInt("QUANTITY");
+            }
+        }
+        return result;
+    }
+
+    public int nbClients() throws SQLException {
+        int result = 0;
+        String sql = "SELECT * FROM CUSTOMER";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                result = result + rs.getDouble("PURCHASE_COST")*rs.getInt("QUANTITY");
+                result++;
             }
         }
         return result;
     }
     
+        public int nbManufacturer() throws SQLException {
+        int result = 0;
+        String sql = "SELECT * FROM MANUFACTURER";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                result++;
+            }
+        }
+        return result;
+    }
+            public int nbProduits() throws SQLException {
+        int result = 0;
+        String sql = "SELECT * FROM PRODUCT";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                result++;
+            }
+        }
+        return result;
+    }
     public int generateOrderNum() throws SQLException {
         int ret = 0;
         String sql = "SELECT MAX(ORDER_NUM) FROM PURCHASE_ORDER";
@@ -291,7 +328,6 @@ public class DAO {
     }
 
     //Permet de créer une commande.
-
     public int addPurchaseOrder(int id, int product_id, int quantity) throws SQLException {
         int ret = 0;
         String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, SHIPPING_DATE) VALUES (?, ?, ?, ?, ?)";
@@ -501,8 +537,8 @@ public class DAO {
 
         return ret;
     }
-    
-        public List<DiscountCode> customerCodes(Customer c) throws SQLException {
+
+    public List<DiscountCode> customerCodes(Customer c) throws SQLException {
         List<DiscountCode> result = new LinkedList<>();
         int id = Integer.parseInt(c.getPassword());
         String sql = "SELECT * FROM DISCOUNT_CODE"
