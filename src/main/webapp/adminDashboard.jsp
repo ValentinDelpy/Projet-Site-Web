@@ -172,8 +172,6 @@
                                 </li>
                             </ul>
                         </nav>
-
-                        <!-- your footer here -->
                     </div>
                 </footer>
             </div>
