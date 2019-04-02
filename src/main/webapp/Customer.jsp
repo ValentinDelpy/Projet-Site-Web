@@ -25,7 +25,7 @@
                         <a class="nav-link" href="#">Profil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Liste des produits</a>
+                        <a class="nav-link" href="customerController?action=SHOW_PRODUIT">Liste des produits</a>
                     </li>
                     <li class="nav-item">
                         <form action="LoginController" method="POST">
