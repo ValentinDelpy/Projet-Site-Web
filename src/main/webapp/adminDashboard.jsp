@@ -84,17 +84,17 @@
                   <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                       <div class="card-icon">
-                        <i class="material-icons">store</i>
+                        <i class="material-icons">euro_symbol</i>
                       </div>
-                      <p class="card-category">Nombre produits</p>
-                      <h3 class="card-title">49/50
+                      <p class="card-category">Bénéfices</p>
+                      <h3 class="card-title">
                         <small>GB</small>
                       </h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">
-                        <i class="material-icons text-danger">warning</i>
-                        <a href="#pablo">Get More Space...</a>
+                        <i class="material-icons">local_offer</i>
+                        <a>Chiffre d'affaire total</a>
                       </div>
                     </div>
                   </div>
@@ -103,14 +103,15 @@
                   <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                       <div class="card-icon">
-                        <i class="material-icons">attach_money</i>
+                        <i class="material-icons">store</i>
                       </div>
-                      <p class="card-category">Bénéfices</p>
-                      <h3 class="card-title">$34,245</h3>
+                      <p class="card-category">Nombre de produits</p>
+                      <h3 class="card-title">245</h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">
-                        <i class="material-icons">date_range</i> Last month
+                        <i class="material-icons">date_range</i>
+                        <a> Depuis le début </a>
                       </div>
                     </div>
                   </div>
@@ -119,26 +120,26 @@
                   <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                       <div class="card-icon">
-                        <i class="material-icons">info_outline</i>
+                        <i class="material-icons">person</i>
                       </div>
-                      <p class="card-category">Fixed Issues</p>
+                      <p class="card-category">Nombre clients</p>
                       <h3 class="card-title">75</h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">
                         <i class="material-icons">local_offer</i> Tracked from Github
                       </div>
-                    </div>
+                    </div> 
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
-                        <i class="fa fa-twitter"></i>
+                        <i class="material-icons">local_shipping</i>
                       </div>
-                      <p class="card-category">Followers</p>
-                      <h3 class="card-title">+245</h3>
+                      <p class="card-category">Nombre manufacturer</p>
+                      <h3 class="card-title">245</h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">
