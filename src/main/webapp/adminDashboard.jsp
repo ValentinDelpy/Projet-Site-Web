@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <link href="ressources/css/admin.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,13 +35,13 @@
               <p>Dashboard</p>
             </a>
             <li class="nav-item ">
-              <a class="nav-link" href="./tables.html">
+              <a class="nav-link" href="./adminTables.jsp">
                 <i class="material-icons">content_paste</i>
                 <p>Table List</p>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="./tables.html">
+              <a class="nav-link" href="./ajoutDiscount.jsp">
                 <i class="material-icons">eject</i>
                 <p>Disconnect</p>
               </a>
