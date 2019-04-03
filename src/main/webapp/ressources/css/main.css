@@ -156,8 +156,9 @@ iframe {
   margin: 0 auto;
 }
 
-.container-login100 {
-  width: 100%;  
+
+body {
+  width: auto;  
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,7 +178,7 @@ iframe {
 
 .wrap-login100 {
   margin: 0 auto;
-  width: 960px;
+  width: 85%;
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -194,7 +195,7 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
+  width: 35%;
 }
 
 .login100-pic img {
