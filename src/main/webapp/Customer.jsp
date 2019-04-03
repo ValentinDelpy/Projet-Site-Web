@@ -78,7 +78,7 @@
                         <div class="card" style="size: 20%">
                             <form class="form-inline">
                                 <div class="form-group mb-2">
-                                    <input type="text" class="form-control" disabled placeholder="Company" value="<fmt:formatNumber value = "${solde}" type = "currency"/>">            </div>
+                                    <input type="text" class="form-control" disabled placeholder="Company" value="<fmt:formatNumber value = ${solde} >" type = "currency"/>            </div>
                                 <div class="form-group mx-sm-3 mb-2">
                                     <label for="inputPassword2" class="sr-only">Montant à ajouter</label>
                                     <input type="number" class="form-control" id="argentAdd" placeholder="Montant à ajouter">
