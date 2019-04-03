@@ -206,6 +206,7 @@ public class DAO {
                 while (rs.next()) {
                     String email = rs.getString("EMAIL");
                     Customer c = new Customer(email);
+                    c.setID(rs.getInt("CUSTOMER_ID"));
                     c.setCity(rs.getString("CITY"));
                     c.setCredit(rs.getInt("CREDIT_LIMIT"));
                     c.setName(rs.getString("NAME"));

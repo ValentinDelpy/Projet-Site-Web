@@ -18,11 +18,15 @@ public class Customer {
     public String city;
     public String addressline1;
     public int credit;
-
+    public int ID;
+    
     public Customer() {
        
     }
-
+    public void setID(int id){
+        this.ID = id;
+    }
+    
     public String getState() {
         return state;
     }
