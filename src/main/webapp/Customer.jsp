@@ -5,11 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Profil client : ${userName}</title>
+        <title>Profil client : ${userName} </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="ressources/css/other.css">
     </head>
@@ -43,7 +46,7 @@
                                 <h4 class="title">Effectuer une commande : </h4>
                             </div>
                             <div class="content">
-                                <form method='POST' action="customerController">
+                                <form method='POST' action="CustomerController">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -76,12 +79,15 @@
                     </div>
                     <div class="col">
                         <div class="card" style="size: 20%">
-                            <form class="form-inline">
+                            <form class="form-inline" method='POST' action="CustomerController">
                                 <div class="form-group mb-2">
-                                    <input type="text" class="form-control" disabled placeholder="Company" value="<fmt:formatNumber value = ${solde} >" type = "currency"/>            </div>
-                                <div class="form-group mx-sm-3 mb-2">
+                                    <fmt:setLocale value = "en_US"/>
+                                    <input type="text" class="form-control" disabled placeholder="Company" value='<fmt:formatNumber value = "${solde}" type = "currency" />'>            </div>
+                                
+                                    <div class="form-group mx-sm-3 mb-2">
                                     <label for="inputPassword2" class="sr-only">Montant à ajouter</label>
-                                    <input type="number" class="form-control" id="argentAdd" placeholder="Montant à ajouter">
+                                    <input type="text" class="form-control" id="argentAdd" placeholder="montant" name="montant">
+                                    <input type="hidden" name="action" value="DO_VIREMENT">
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
                             </form>

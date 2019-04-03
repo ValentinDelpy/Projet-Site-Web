@@ -69,7 +69,7 @@ public class CustomerController extends HttpServlet {
                     solde = dao.soldeClient(Integer.parseInt(password));
                     session.setAttribute("solde", solde);
                     request.setAttribute("message", "Commande de " + quantite + " '" + request.getParameter("produit") + "'" + " réalisée.");
-                    request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+                    request.getRequestDispatcher("Customer.jsp").forward(request, response);
                     break;
 
                 case "DELETE_COMMANDE":
@@ -80,7 +80,7 @@ public class CustomerController extends HttpServlet {
                         solde = dao.soldeClient(Integer.parseInt(password));
                         session.setAttribute("solde", solde);
                         request.setAttribute("message", "Commande " + purchaseToDelete + " Supprimée");
-                        request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+                        request.getRequestDispatcher("Customer.jsp").forward(request, response);
 
                     } catch (SQLIntegrityConstraintViolationException e) {
                         request.setAttribute("message2", "Impossible de supprimer " + purchaseToDelete + ", cette commande est utilisée.");
@@ -100,7 +100,7 @@ public class CustomerController extends HttpServlet {
                         session.setAttribute("commandes", dao.customerCommandes(c));
                         solde = dao.soldeClient(Integer.parseInt(password));
                         session.setAttribute("solde", solde);
-                        request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+                        request.getRequestDispatcher("Customer.jsp").forward(request, response);
 
                     } catch (SQLIntegrityConstraintViolationException e) {
                         request.setAttribute("message", "Impossible de modifier " + purchaseToEdit + ", cette commande est utilisée.");
@@ -114,20 +114,21 @@ public class CustomerController extends HttpServlet {
                         solde = dao.soldeClient(Integer.parseInt(password));
                         session.setAttribute("solde", solde);
                         request.setAttribute("message", "Virement de : " + montant + "$ réalisé sur votre compte.");
-                        request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+                        request.getRequestDispatcher("Customer.jsp").forward(request, response);
+                        
                     } catch (SQLIntegrityConstraintViolationException e) {
-
+                            
                     }
                     break;
 
                 case "SHOW_PRODUIT":
                     List<Product> listeProduit = dao.allProducts();
                     session.setAttribute("listeProduit", listeProduit);
-                    request.getRequestDispatcher("WEB-INF/produits.jsp").forward(request, response);
+                    request.getRequestDispatcher("Custemer.jsp").forward(request, response);
                     break;
 
                 case "SHOW_CLIENT":
-                    request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+                    request.getRequestDispatcher("Customer.jsp").forward(request, response);
                     break;
 
             }
@@ -137,7 +138,8 @@ public class CustomerController extends HttpServlet {
         }
 
         // Est-ce que l'utilisateur est connecté ?
-        request.getRequestDispatcher("WEB-INF/customer.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("Customer.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -149,12 +151,19 @@ public class CustomerController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    	private String findUserInSession(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		return (session == null) ? null : (String) session.getAttribute("userName");
+	}
+    
       @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            
             Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 	}
@@ -173,20 +182,14 @@ public class CustomerController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            
+            System.out.println("salr je suce oui oui pioipipiopiohoofauhouaegvoiaehbvoilqejnvlezuhn");
             Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
      
      
      
-   
-
-	
-
-	private String findUserInSession(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		return (session == null) ? null : (String) session.getAttribute("userName");
-	}
         
         private void supprimerCode(String code) throws SQLException {
 		DAO dao = new DAO();

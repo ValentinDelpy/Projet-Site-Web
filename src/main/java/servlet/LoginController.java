@@ -130,8 +130,10 @@ public class LoginController extends HttpServlet {
                 //session.setAttribute("commandes", dao.customerCommandes(c));  
                 //List<Product> des = dao.allProducts();
                 //request.setAttribute("listeProduits", des);
-                //Double solde = dao.soldeClient(Integer.parseInt(password));
-                //session.setAttribute("solde", solde);
+                Double solde = dao.soldeClient(Integer.parseInt(password));
+                System.out.println("---------------"+solde);
+                
+                session.setAttribute("solde", solde);
                 //session.setAttribute("codes", viewCodes(request));
             } else if (login.equals("nodata")) {
                 request.setAttribute("errorMessage", "Login/Password incorrect");
