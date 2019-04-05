@@ -64,7 +64,7 @@ public class CustomerController extends HttpServlet {
             switch (action) {
 
                 case "ADD_COMMANDE": // Requête d'ajout (vient du formulaire de saisie)
-                    dao.addPurchaseOrder(Integer.parseInt(password), Integer.parseInt(quantite), dao.numProduct(request.getParameter("produit")));
+                    dao.addPurchaseOrder(Integer.parseInt(password), dao.numProduct(request.getParameter("produit")), Integer.parseInt(quantite));
                     session.setAttribute("commandes", dao.customerCommandes(c));
                     solde = dao.soldeClient(Integer.parseInt(password));
                     session.setAttribute("solde", solde);

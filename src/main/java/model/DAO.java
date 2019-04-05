@@ -281,14 +281,22 @@ public class DAO {
     }
    
     public int generateOrderNum() throws SQLException{
-        int ret = 0;
-        String sql = "SELECT MAX(ORDER_NUM) FROM PURCHASE_ORDER";
+        List<Integer> result = new ArrayList<>();
+
+        String sql = "SELECT ORDER_NUM FROM PURCHASE_ORDER";
         try (Connection connection = myDataSource.getConnection();
-                PreparedStatement stmt = connection.prepareStatement(sql)){
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
-            ret = rs.getInt("ORDER_NUM") + 1;
+            while (rs.next()) {
+                int id = rs.getInt("ORDER_NUM");
+                result.add(id);
+            }
         }
-        return ret;
+        int numAlea = (int) (Math.random() * 10000);
+        while (result.contains(numAlea)) {
+            numAlea = (int) (Math.random() * 10000);
+        }
+        return numAlea;
     }
     
     public boolean checkBuying(int id, int product_id, int quantity) throws SQLException{
