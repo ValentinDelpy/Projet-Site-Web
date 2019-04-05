@@ -51,7 +51,6 @@ public class AdminTableController extends HttpServlet {
         try {
             switch (action) {
                 case "SHOW_CLIENTS":
-                    System.out.println("oui");
                     ArrayList<Customer> listeClients = (ArrayList<Customer>) dao.allCustomers();
                     session.setAttribute("listeClients", listeClients);
                     request.getRequestDispatcher("adminTables.jsp").forward(request, response);

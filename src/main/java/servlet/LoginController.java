@@ -130,7 +130,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userPassword", password);
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
-                session.setAttribute("commandes", dao.customerCommandes(c));  
+                session.setAttribute("commandent", dao.customerCommandes(c));  
                 ArrayList<String> des = dao.allProduct2();
                 request.setAttribute("listeProduits", des);
                 Double solde = dao.soldeClient(Integer.parseInt(password));

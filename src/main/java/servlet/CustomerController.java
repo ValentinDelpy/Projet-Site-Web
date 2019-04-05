@@ -125,7 +125,7 @@ public class CustomerController extends HttpServlet {
                 case "SHOW_PRODUIT":
                     ArrayList<String> listeProduit = dao.allProduct2();
                     session.setAttribute("listeProduit", listeProduit);
-                    request.getRequestDispatcher("Custemer.jsp").forward(request, response);
+                    request.getRequestDispatcher("Customer.jsp").forward(request, response);
                     break;
 
                 case "SHOW_CLIENT":
