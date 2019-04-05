@@ -85,14 +85,14 @@
                                         <div class="card card-stats">
                                             <div class="card-header card-header-warning card-header-icon">
                                                 <div class="card-icon">
-                                                    <i class="material-icons">euro_symbol</i>
+                                                    <i class="material-icons">attach_money</i>
                                                 </div>
                                                 <p class="card-category">Bénéfice</p>
                                                 <h3 class="card-title">                                                    
                                                     <% DAO dao = new DAO();
                                                         out.println(dao.benefice());%>
                                                   
-                                                    <small>euros</small>
+                                                    <small>dollars</small>
                                                 </h3>
                                                 
                                             </div>
