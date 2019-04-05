@@ -415,7 +415,7 @@ public class DAO {
         Boolean res = false;
         int oldQuantity = this.ancienneQuantite(order_num);
         if (oldQuantity >= quantity) {
-            this.addMoney(this.CustomerIdByOrderNum(order_num), this.price(oldQuantity - quantity, this.getProductIDByOrderNum(order_num), this.CustomerIdByOrderNum(order_num)));
+            addMoney(this.CustomerIdByOrderNum(order_num), this.price(oldQuantity - quantity, this.prodId(order_num), this.CustomerIdByOrderNum(order_num)));
             String sql = "UPDATE PURCHASE_ORDER SET QUANTITY = ? WHERE ORDER_NUM = ?";
             try (Connection connection = myDataSource.getConnection();
                     PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -428,8 +428,8 @@ public class DAO {
             }
         } else {
             int diff = quantity - oldQuantity;
-            if (this.checkBuying(customerID, this.getProductIDByOrderNum(order_num), diff)) {
-                this.substractMoney(customerID, price(diff, this.getProductIDByOrderNum(order_num), customerID));
+            if (this.checkBuying(customerID, this.prodId(order_num), diff)) {
+                substractMoney(customerID, price(diff, this.prodId(order_num), customerID));
                 String sql = "UPDATE PURCHASE_ORDER SET QUANTITY = ? WHERE ORDER_NUM = ?";
                 try (Connection connection = myDataSource.getConnection();
                         PreparedStatement stmt = connection.prepareStatement(sql)) {
