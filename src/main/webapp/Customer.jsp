@@ -46,8 +46,9 @@
                                 <h4 class="title">Effectuer une commande : </h4>
                             </div>
                             <div class="content">
+                                <div class="row">
                                 <form method='POST' action="LoginController">
-                                    <div class="row">
+                                    
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Produit</label>
@@ -59,54 +60,58 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Quantité</label>
-                                                <input type="text" class="form-control" placeholder="Quantite" value="" name="quantite">
-                                                <input type="hidden" name="action" value="ADD_COMMANDE">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group ">
-                                                <button type="submit" class="btn btn-info btn-fill pull-right">Ajouter</button>
-                                            </div>
+                                </form>
+                                
+                                <form method='POST' action="CustomerController">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Quantité</label>
+                                            <input type="text" class="form-control" placeholder="Quantite" value="" name="quantite">
+                                            <input type="hidden" name="action" value="ADD_COMMANDE">
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <div class="col-md-4">
+                                        <div class="form-group ">
+                                            <button type="submit" class="btn btn-info btn-fill pull-right">Ajouter</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="size: 20%">
-                            <form class="form-inline" method='POST' action="CustomerController">
-                                <div class="form-group mb-2">
-                                    <fmt:setLocale value = "en_US"/>
-                                    <input type="text" class="form-control" disabled placeholder="Company" value='<fmt:formatNumber value = "${solde}" type = "currency" />'>            </div>
-                                
-                                    <div class="form-group mx-sm-3 mb-2">
-                                    <label for="inputPassword2" class="sr-only">Montant à ajouter</label>
-                                    <input type="text" class="form-control" id="argentAdd" placeholder="montant" name="montant">
-                                    <input type="hidden" name="action" value="DO_VIREMENT">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
-                            </form>
+                            <div class="clearfix"></div>
+                            
                         </div>
                     </div>
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid">
+                <div class="col">
+                    <div class="card" style="size: 20%">
+                        <form class="form-inline" method='POST' action="CustomerController">
+                            <div class="form-group mb-2">
+                                <fmt:setLocale value = "en_US"/>
+                                <input type="text" class="form-control" disabled placeholder="Company" value='<fmt:formatNumber value = "${solde}" type = "currency" />'>            </div>
 
-                        <p class="copyright pull-right">
-                            &copy;<a href="#"> Promotion 2021</a>, made by CDGDC Corporation.
-                        </p>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="inputPassword2" class="sr-only">Montant à ajouter</label>
+                                <input type="text" class="form-control" id="argentAdd" placeholder="montant" name="montant">
+                                <input type="hidden" name="action" value="DO_VIREMENT">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                        </form>
                     </div>
-                </footer>
+                </div>
             </div>
-        </div>
+            <footer class="footer">
+                <div class="container-fluid">
 
-    </body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                    <p class="copyright pull-right">
+                        &copy;<a href="#"> Promotion 2021</a>, made by CDGDC Corporation.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>

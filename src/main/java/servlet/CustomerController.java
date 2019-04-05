@@ -41,7 +41,7 @@ public class CustomerController extends HttpServlet {
         action = (action == null) ? "" : action;
 
         String quantite = request.getParameter("quantite");
-        List<Product> des = dao.allProducts();
+        ArrayList<String> des = dao.allProduct2();
         request.setAttribute("listeProduits", des);
 
         // Pour supprimer des commandes
@@ -122,7 +122,7 @@ public class CustomerController extends HttpServlet {
                     break;
 
                 case "SHOW_PRODUIT":
-                    List<Product> listeProduit = dao.allProducts();
+                    ArrayList<String> listeProduit = dao.allProduct2();
                     session.setAttribute("listeProduit", listeProduit);
                     request.getRequestDispatcher("Custemer.jsp").forward(request, response);
                     break;
