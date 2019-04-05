@@ -46,7 +46,7 @@
                                 <h4 class="title">Effectuer une commande : </h4>
                             </div>
                             <div class="content">
-                                <form method='POST' action="CustomerController">
+                                <form method='POST' action="LoginController">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">

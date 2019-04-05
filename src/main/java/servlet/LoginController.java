@@ -79,7 +79,8 @@ public class LoginController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            System.out.println("bug");
+            System.out.println("bug45");
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -119,6 +120,8 @@ public class LoginController extends HttpServlet {
 
             // si le mail et le mdp correspondent alors on peut se connecter
             if ((login.equals(loginParam) && (password.equals(passwordParam)))) {
+                
+                System.out.println("---------------_____________");
                 // On a trouvé la combinaison login / password
                 // On stocke l'information dans la session
                 HttpSession session = request.getSession(true); // démarre la session
@@ -127,9 +130,9 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userPassword", password);
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
-                //session.setAttribute("commandes", dao.customerCommandes(c));  
-                //List<Product> des = dao.allProducts();
-                //request.setAttribute("listeProduits", des);
+                session.setAttribute("commandes", dao.customerCommandes(c));  
+                ArrayList<String> des = dao.allProduct2();
+                request.setAttribute("listeProduits", des);
                 Double solde = dao.soldeClient(Integer.parseInt(password));
                 System.out.println("---------------"+solde);
                 

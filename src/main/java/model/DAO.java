@@ -140,7 +140,21 @@ public class DAO {
         }
         return ret;
     }
+    public ArrayList<String> allProduct2() throws SQLException {
+        ArrayList<String> result = new ArrayList<>();
+        String sql = "SELECT DESCRIPTION FROM PRODUCT WHERE QUANTITY_ON_HAND > 0";
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String des = rs.getString("DESCRIPTION");
+                result.add(des);
+            }
+        }
+        return result;
+    }
+    
     public List<Product> allProducts() throws SQLException {
         ArrayList<Product> myProducts = new ArrayList<>();
         String sql = "SELECT * FROM PRODUCT";
@@ -177,18 +191,26 @@ public class DAO {
     }
 
     //Récupère le taux de réduction d'un customer en fonction de son identifiant.
-    public double customerRate(int customer_ID) throws SQLException {
+    public double customerRate(int customer_id) throws SQLException {
         double ret = 0;
-        String sql = "SELECT RATE FROM DISCOUNT_CODE INNER JOIN CUSTOMER ON CUSTOMER.DISCOUNT_CODE = DISCOUNT_CODE.DISCOUNT_CODE WHERE CUSTOMER_ID = ?";
+        String sql = "SELECT RATE FROM DISCOUNT_CODE"
+                + " INNER JOIN CUSTOMER"
+                + " USING (DISCOUNT_CODE)"
+                + " WHERE CUSTOMER_ID = ?";
+
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, customer_ID);
+            stmt.setInt(1, customer_id);
             ResultSet rs = stmt.executeQuery();
-            ret = rs.getDouble("RATE");
+            while (rs.next()) {
+
+                double rate = rs.getDouble("RATE");
+                ret = rate;
+            }
         }
+        System.out.println("ma valeur est de  -----------------------" + ret);
         return ret;
     }
-
     //Retourne la liste de tous les clients.
     public List<Customer> allCustomers() throws SQLException {
         ArrayList<Customer> myCustomers = new ArrayList<>();

@@ -10,6 +10,7 @@ model\DataSourceFactory$1.class
 model\ProductCode.class
 servlet\AdminController.class
 model\DataSourceFactory.class
+servlet\AdminTableController.class
 model\Product.class
 model\Manufacturer.class
 model\MicroMarket.class
