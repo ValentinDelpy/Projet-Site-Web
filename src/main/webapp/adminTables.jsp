@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Customer"%>
-  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,8 +116,8 @@
                                                         
                                                     <c:forEach var="customer" items="${customers}">
                                                         <tr>
-                                                            <td>${customer.ID}</td>
-                                                            <td>${customer.City}</td> 
+                                                            <td>${customer.CUTSOMER_ID}</td>
+                                                            <td>${customer.NAME}</td> 
                                                             <td>${customer.ADRESSLINE1}</td> 
                                                             <td>${customer.STATE}</td>
                                                             <td>${customer.CREDIT_LIMIT}</td>
