@@ -21,8 +21,9 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="ressources/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="ressources/css/util.css">
-	<link rel="stylesheet" type="text/css" href="ressources/css/main.css">
+        <link rel="stylesheet" type="text/css" href="ressources/css/main.css">
+	<!-- <link rel="stylesheet" type="text/css" href="ressources/css/util.css"> -->
+
 <!--===============================================================================================-->
 </head>
 <body>
