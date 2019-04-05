@@ -178,7 +178,7 @@ body {
 
 .wrap-login100 {
   margin: 0 auto;
-  width: 85%;
+  width: 100%;
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -189,17 +189,22 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  padding: 5% 10% 5% 10%;
 }
 
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 35%;
+  width: 45%;
 }
 
 .login100-pic img {
   max-width: 100%;
+
+}
+
+.login100-pic.js-tilt{
+ padding: 2.5% 10% 0% 0%;
 }
 
 
@@ -359,14 +364,13 @@ body {
 [ Responsive ]*/
 
 
-
-@media (max-width: 992px) {
+@media (max-width: 75%) {
   .wrap-login100 {
-    padding: 177px 90px 33px 85px;
+    margin: 10% 5% 10% 5%;
   }
 
   .login100-pic {
-    width: 35%;
+    width: 45%;
   }
 
   .login100-form {
