@@ -66,6 +66,7 @@ public class CustomerController extends HttpServlet {
                 case "ADD_COMMANDE": // Requête d'ajout (vient du formulaire de saisie)
                     dao.addPurchaseOrder(Integer.parseInt(password), dao.numProduct(request.getParameter("produit")), Integer.parseInt(quantite));
                     session.setAttribute("commandes", dao.customerCommandes(c));
+                    
                     solde = dao.soldeClient(Integer.parseInt(password));
                     session.setAttribute("solde", solde);
                     request.setAttribute("message", "Commande de " + quantite + " '" + request.getParameter("produit") + "'" + " réalisée.");
@@ -75,7 +76,7 @@ public class CustomerController extends HttpServlet {
                 case "DELETE_COMMANDE":
                     try {
                         dao.deletePurchaseOrder(Integer.parseInt(purchaseToDelete));
-
+                        System.out.println("123_________________123");
                         session.setAttribute("commandes", dao.customerCommandes(c));
                         solde = dao.soldeClient(Integer.parseInt(password));
                         session.setAttribute("solde", solde);

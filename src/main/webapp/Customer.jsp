@@ -122,7 +122,7 @@
                                     <tbody>
                                         <c:forEach var="comm" items="${commandes}">
                                             <tr>
-                                        <form method='POST' action="customerController">
+                                        <form method='POST' action="CustomerController">
                                             <td >
                                                 ${comm.CUSTOMER_ID}
                                             </td>
@@ -151,11 +151,12 @@
                                         <td >
                                             ${comm.SHIPPING_DATE}
                                         </td>
-                                        <form method='POST' action="customerController">
+                                        
+                                        <form method='POST' action="CustomerController">
                                             <td>
                                                 <input hidden name="purchaseToDelete" id="${comm.ORDER_NUM}" type="text" class="validate" value="${comm.ORDER_NUM}">
                                                 <input type="hidden" name="action" value="DELETE_COMMANDE">
-                                                <button type="submit" class="btn btn-info btn-fill pull-left">Delete <i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-info btn-fill pull-left" name="action" value="DELETE_COMMANDE">Delete <i class="fa fa-trash"></i></button>
 
                                                 </a>
                                             </td>
