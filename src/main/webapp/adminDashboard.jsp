@@ -231,7 +231,7 @@
                                 <div class="card ">
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par Client</h4>
-                                        <p class="category">Qui est le plus gros acheteur compulsif ?</p>
+                                        <p class="category"></p>
                                         <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_cli">
                                             <input type="date" class="choixdate" name="date_fin_cli">
@@ -255,7 +255,7 @@
                                 <div class="card ">
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par Catégorie d'article</h4>
-                                        <p class="category">Quel produit plaît le plus à Jasmine Ghozali ?</p>
+                                        <p class="category"></p>
                                         <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_cat">
                                             <input type="date" class="choixdate" name="date_fin_cat">
@@ -282,7 +282,7 @@
                                 <div class="card ">
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par ZIP (Code postal)</h4>
-                                        <p class="category">Quel "Plan d'Amélioration du Découpage en Zone" possède le meilleur CA ?</p>
+                                        <p class="category"></p>
                                         <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_zip">
                                             <input type="date" class="choixdate" name="date_fin_zip">
@@ -344,7 +344,7 @@
         };
         var chart = new Chart(ctx, {
             // The type of chart we want to create
-            type: 'horizontalBar',
+            type: 'bar',
 
             // The data for our dataset
             data: {
@@ -434,7 +434,7 @@
         </c:forEach>
         var chart = new Chart(ctx, {
             // The type of chart we want to create
-            type: 'horizontalBar',
+            type: 'bar',
 
             // The data for our dataset
             data: {
@@ -464,13 +464,13 @@
         </c:forEach>
         var chart = new Chart(ctx, {
             // The type of chart we want to create
-            type: 'horizontalBar',
+            type: 'bar',
 
             // The data for our dataset
             data: {
                 labels: label,
                 datasets: [{
-                           label: "CA par catégorie d'article en $, ${dateZip}",
+                           label: "CA par code postal en $, ${dateZip}",
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: ca,
