@@ -1,4 +1,9 @@
 <%@page import="model.DAO" %> 
+<%@page import="servlet.AdminController" %> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -87,7 +92,7 @@
                                                 <div class="card-icon">
                                                     <i class="material-icons">attach_money</i>
                                                 </div>
-                                                <p class="card-category">Bénéfice</p>
+                                                <p class="card-category">BÃ©nÃ©fice</p>
                                                 <h3 class="card-title">                                                    
                                                     <% DAO dao = new DAO();
                                                         out.println(dao.benefice());%>
@@ -118,7 +123,7 @@
                                             <div class="card-footer">
                                                 <div class="stats">
                                                     <i class="material-icons">date_range</i>
-                                                    <a> Un choix varié </a>
+                                                    <a> Un choix variÃ© </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,7 +141,7 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="stats">
-                                                    <i class="material-icons">local_offer</i> Fidèles et assidus
+                                                    <i class="material-icons">local_offer</i> FidÃ¨les et assidus
                                                 </div>
                                             </div> 
                                         </div>
@@ -172,7 +177,7 @@
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par Produit</h4>
                                         <p class="category">Visualisez quelle produit a le plus grand chiffre d'affaire !</p>
-                                        <form method='POST' action="AdminController">
+                                        <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut">
                                             <input type="date" class="choixdate" name="date_fin">
                                             <input type="hidden" name="action" value="caByProduct">
@@ -194,11 +199,11 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title">Chiffre d'affaire par Zone Géographique</h4>
+                                        <h4 class="title">Chiffre d'affaire par Zone GÃ©ographique</h4>
                                         <p class="category">Quelle zone vend le plus ?</p>
                                     </div>
                                     <div class="content">
-                                        <form method='POST' action="AdminController">
+                                        <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_geo">
                                             <input type="date" class="choixdate" name="date_fin_geo">
                                             <input type="hidden" name="action" value="caByGeo">
@@ -227,7 +232,7 @@
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par Client</h4>
                                         <p class="category">Qui est le plus gros acheteur compulsif ?</p>
-                                        <form method='POST' action="AdminController">
+                                        <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_cli">
                                             <input type="date" class="choixdate" name="date_fin_cli">
                                             <input type="hidden" name="action" value="caByCli">
@@ -249,9 +254,9 @@
                             <div class="col-md-6">
                                 <div class="card ">
                                     <div class="header">
-                                        <h4 class="title">Chiffre d'affaire par Catégorie d'article</h4>
-                                        <p class="category">Quel produit plaît le plus à Jasmine Ghozali ?</p>
-                                        <form method='POST' action="AdminController">
+                                        <h4 class="title">Chiffre d'affaire par CatÃ©gorie d'article</h4>
+                                        <p class="category">Quel produit plaÃ®t le plus Ã  Jasmine Ghozali ?</p>
+                                        <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_cat">
                                             <input type="date" class="choixdate" name="date_fin_cat">
                                             <input type="hidden" name="action" value="caByProductCode">
@@ -277,8 +282,8 @@
                                 <div class="card ">
                                     <div class="header">
                                         <h4 class="title">Chiffre d'affaire par ZIP (Code postal)</h4>
-                                        <p class="category">Quel "Plan d'Amélioration du Découpage en Zone" possède le meilleur CA ?</p>
-                                        <form method='POST' action="AdminController">
+                                        <p class="category">Quel "Plan d'AmÃ©lioration du DÃ©coupage en Zone" possÃ¨de le meilleur CA ?</p>
+                                        <form method='POST' action="<c:url value="AdminControl"/>">
                                             <input type="date" class="choixdate" name="date_debut_zip">
                                             <input type="date" class="choixdate" name="date_fin_zip">
                                             <input type="hidden" name="action" value="caByZip">
@@ -375,7 +380,7 @@
             data: {
                 labels: label,
                 datasets: [{
-                        label: "CA par zone Géographique en $, ${dateGeo}",
+                        label: "CA par zone GÃ©ographique en $, ${dateGeo}",
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: ca,
@@ -435,7 +440,7 @@
             data: {
                 labels: label,
                 datasets: [{
-                        label: "CA par catégorie d'article en $, ${dateProductCode}",
+                        label: "CA par catÃ©gorie d'article en $, ${dateProductCode}",
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: ca,
@@ -465,7 +470,7 @@
             data: {
                 labels: label,
                 datasets: [{
-                           label: "CA par catégorie d'article en $, ${dateZip}",
+                           label: "CA par catÃ©gorie d'article en $, ${dateZip}",
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: ca,
