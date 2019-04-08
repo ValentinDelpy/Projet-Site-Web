@@ -66,15 +66,42 @@ public class AdminController extends HttpServlet {
 
         if (null != action) {
             switch (action) {
-                case "logout":
+                 case "logout":
                     doLogout(request);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    request.getRequestDispatcher("ajoutDiscount.jsp").forward(request, response);
                     break;
+                case "caByProduct":
+                    session.setAttribute("productCA", dao.chiffreAffaireByProduct(date_debut, date_fin));
+                    session.setAttribute("dateProduct", "du " + date_debut + " au " + date_fin);
+
+                    request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                    break;
+
+                case "caByProductCode":
+                    session.setAttribute("productCodeCA", dao.chiffreAffaireByProductCode(date_debut_cat, date_fin_cat));
+                    session.setAttribute("dateProductCode", "du " + date_debut_cat + " au " + date_fin_cat);
+
+                    request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                    break;
+
                 case "caByGeo":
-//                    session.setAttribute("geoCA", dao.chiffreAffaireByState(date_debut_geo, date_fin_geo));
+                    session.setAttribute("geoCA", dao.chiffreAffaireByState(date_debut_geo, date_fin_geo));
                     session.setAttribute("dateGeo", "du " + date_debut_geo + " au " + date_fin_geo);
 
-                    request.getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
+                    request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                    break;
+
+                case "caByCli":
+                    session.setAttribute("cliCA", dao.chiffreAffaireByCustomer(date_debut_cli, date_fin_cli));
+                    session.setAttribute("dateCli", "du " + date_debut_cli + " au " + date_fin_cli);
+                    request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                    break;
+                    
+                    
+                case "caByZip":
+                    session.setAttribute("zipCA", dao.chiffreAffaireByZip(date_debut_zip, date_fin_zip));
+                    session.setAttribute("dateZip", "du " + date_debut_zip + " au " + date_fin_zip);
+                    request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
                     break;
 
             }

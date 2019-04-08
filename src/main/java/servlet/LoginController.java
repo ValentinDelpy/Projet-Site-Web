@@ -97,6 +97,7 @@ public class LoginController extends HttpServlet {
 
         // on va créer un DAO pour pouvoir intéragir avec la bdd
         DAO dao = new DAO();
+        Customer customer = new Customer();
         CustomerController cc = new CustomerController();
         // Les paramètres transmis dans la requête
         String loginParam = request.getParameter("uname");
@@ -110,6 +111,8 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession(true); // démarre la session
             session.setAttribute("userName", "admin");
             session.setAttribute("customers",dao.allCustomers());
+            
+            System.out.println(dao.allCustomers());
         } else if (!"".equals(loginParam) && !"".equals(passwordParam)) {
             Customer c = dao.selectCustomerByMail(loginParam);
             // Le login/password défini dans les propiétés du customer

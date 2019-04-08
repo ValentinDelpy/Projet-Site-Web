@@ -132,6 +132,7 @@
                                                 <p name="purchaseToEdit" value="${comm.ORDER_NUM}">${comm.ORDER_NUM}</p>
                                             </td>
                                             <td >
+                                                
                                                 <input name="quantityToEdit" id="${comm.QUANTITY}" type="text" class="validate" value ="${comm.QUANTITY}">
                                                 <input type="hidden" name="action" value="EDIT_COMMANDE">
                                             </td>

@@ -176,7 +176,7 @@
                                             <input type="date" class="choixdate" name="date_debut">
                                             <input type="date" class="choixdate" name="date_fin">
                                             <input type="hidden" name="action" value="caByProduct">
-                                            <input type="submit" value="Envoyer">
+                                            <input type="submit" value="Envoyer" name="action" value="caByProduct">
                                         </form>
                                     </div>
                                     <div class="content">
@@ -185,9 +185,7 @@
                                         <div class="footer">
 
                                             <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-clock-o"></i> Etude très sérieuse réalisée d'après les achats de Sophie P. 
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -242,9 +240,7 @@
                                         <div class="footer">
 
                                             <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Villany, enseignant.
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -268,9 +264,7 @@
                                         <div class="footer">
 
                                             <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Francis Faux, enseignant.
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -297,9 +291,7 @@
                                         <div class="footer">
 
                                             <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-check"></i> Etude réalisée en partenariat avec M. Regner, enseignant.
-                                            </div>
+                                          
                                         </div>
                                     </div>
                                 </div>

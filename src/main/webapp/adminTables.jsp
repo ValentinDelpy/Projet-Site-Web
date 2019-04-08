@@ -115,6 +115,7 @@
                                                     <tbody>
                                                         
                                                     <c:forEach var="cust" items="${customers}">
+                                                        ${customers2}
                                                         
                                                         <tr>
                                                             <td>${cust.ID}</td>
