@@ -22,6 +22,14 @@
             <div id="sidebar">
                 <div class="sidebar-header">
                     <h3>${userName}</h3>
+                    <p class="description text-center"> "Le plein de fraîcheur <br>
+                                    et d'économies" <br>
+
+                                </p>
+                                <c:forEach var="item" items="${codes}">
+                                    <p class="description text-center"> Vous possedez un le code de réduction suivant : "${item.discountCode}"</p>
+                                    <p class="description text-center"> Il vous donne accès à  : ${item.rate}% de réduction sur votre commande</p>
+                                </c:forEach>
                 </div>
 
                 <ul class="list-unstyled components">
@@ -99,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card" >
@@ -132,7 +140,7 @@
                                                 <p name="purchaseToEdit" value="${comm.ORDER_NUM}">${comm.ORDER_NUM}</p>
                                             </td>
                                             <td >
-                                                
+
                                                 <input name="quantityToEdit" id="${comm.QUANTITY}" type="text" class="validate" value ="${comm.QUANTITY}">
                                                 <input type="hidden" name="action" value="EDIT_COMMANDE">
                                             </td>
@@ -153,7 +161,7 @@
                                         <td >
                                             ${comm.SHIPPING_DATE}
                                         </td>
-                                        
+
                                         <form method='POST' action="CustomerController">
                                             <td>
                                                 <input hidden name="purchaseToDelete" id="${comm.ORDER_NUM}" type="text" class="validate" value="${comm.ORDER_NUM}">
@@ -188,7 +196,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {

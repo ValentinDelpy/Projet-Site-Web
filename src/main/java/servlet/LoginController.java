@@ -56,6 +56,7 @@ public class LoginController extends HttpServlet {
             // On choisit la page d'affichage
             jspView = "Customer.jsp";
         } else if ("admin".equals(userName)) {
+            System.out.println("yes");
             jspView = "adminDashboard.jsp";
         }
         // On va vers la page choisie
@@ -112,7 +113,6 @@ public class LoginController extends HttpServlet {
             session.setAttribute("userName", "admin");
             session.setAttribute("customers",dao.allCustomers());
             
-            System.out.println(dao.allCustomers());
         } else if (!"".equals(loginParam) && !"".equals(passwordParam)) {
             Customer c = dao.selectCustomerByMail(loginParam);
             // Le login/password défini dans les propiétés du customer
@@ -142,7 +142,7 @@ public class LoginController extends HttpServlet {
                 System.out.println("---------------"+solde);
                 
                 session.setAttribute("solde", solde);
-                //session.setAttribute("codes", viewCodes(request));
+                session.setAttribute("codes", viewCodes(request));
             } else if (login.equals("nodata")) {
                 request.setAttribute("errorMessage", "Login/Password incorrect");
             } else if ("".equals(loginParam) || "".equals(passwordParam)) { // On positionne un message d'erreur pour l'afficher dans la JSP
@@ -167,5 +167,15 @@ public class LoginController extends HttpServlet {
         return (session == null) ? null : (String) session.getAttribute("userName");
     }
     
-
+                 public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
+            List<DiscountCode> result = new LinkedList<>();
+            DAO dao= new DAO();
+            HttpSession session = request.getSession();
+            String password = ((String)session.getAttribute("userPassword"));
+            Customer c = new Customer();
+            c.setPassword(password);
+            result = dao.customerCodes(c);         
+            
+            return result;
+    }
 }

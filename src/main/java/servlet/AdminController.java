@@ -26,16 +26,14 @@ import model.Customer;
 import model.DAO;
 import model.DiscountCode;
 
-/**
- *
- * @author DGX
- */
-@WebServlet(name = "adminController", urlPatterns = {"/adminController"})
+
+//@WebServlet(name = "adminController", urlPatterns = {"/adminController"})
 public class AdminController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ParseException {
         // Quelle action a appelé cette servlet ?
+        System.out.println("---------++++++++++++++------------");
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
         DAO dao = new DAO();
@@ -71,9 +69,11 @@ public class AdminController extends HttpServlet {
                     request.getRequestDispatcher("ajoutDiscount.jsp").forward(request, response);
                     break;
                 case "caByProduct":
+                    System.out.println("oui2");
                     session.setAttribute("productCA", dao.chiffreAffaireByProduct(date_debut, date_fin));
                     session.setAttribute("dateProduct", "du " + date_debut + " au " + date_fin);
-
+                    System.out.println(date_debut+"  vs   "+date_fin);
+                       System.out.println("oui");
                     request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
                     break;
 

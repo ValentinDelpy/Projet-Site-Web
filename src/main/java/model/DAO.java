@@ -275,7 +275,7 @@ public class DAO {
         return c;
     }
 
-    public double price(int id, int product_id, int quantity) throws SQLException {
+    public double price(int id, int product_id, int quantity) throws SQLException { 
         double result = 0;
         String sql = "SELECT PURCHASE_COST FROM PRODUCT WHERE PRODUCT_ID = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -283,9 +283,10 @@ public class DAO {
             stmt.setInt(1, product_id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                result = (rs.getDouble("PURCHASE_COST") * quantity)                //result = (rs.getDouble("PURCHASE_COST") * quantity);
+                result = ((rs.getDouble("PURCHASE_COST") * quantity)*(100-customerRate(id))/100)
 ;
                 System.out.println(rs.getDouble("PURCHASE_COST"));
+                System.out.println(result);
                 System.out.println("____________________---------------______________"+result+"kkkkkkkkk"+quantity);
             }
         }
@@ -387,7 +388,7 @@ public class DAO {
                 int idCust = rs.getInt("CUSTOMER_ID");
                 int quantity = rs.getInt("QUANTITY");
                 int product = rs.getInt("PRODUCT_ID");
-                double cost = price(quantity, product, idCust);
+                 double cost = price(idCust, product, quantity); 
                 Date date = rs.getDate("SHIPPING_DATE");
                 String descritpion = rs.getString("DESCRIPTION");
                 PurchaseOrder po = new PurchaseOrder(code, idCust, quantity);
