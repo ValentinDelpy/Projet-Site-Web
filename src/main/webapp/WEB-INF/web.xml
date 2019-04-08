@@ -9,6 +9,16 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AdminTableController</servlet-name>
+        <servlet-class>servlet.AdminTableController</servlet-class>
+    </servlet>  
+
+    <servlet-mapping>
+        <servlet-name>AdminTableController</servlet-name>
+        <url-pattern>/AdminTableController</url-pattern>
+    </servlet-mapping>
       
 
     <session-config>
