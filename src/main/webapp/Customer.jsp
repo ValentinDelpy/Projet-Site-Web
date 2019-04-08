@@ -121,7 +121,7 @@
 
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="comm" items="${commandent}">
+                                        <c:forEach var="comm" items="${commandes}">
                                             <tr>
                                         <form method='POST' action="CustomerController">
                                             <td >

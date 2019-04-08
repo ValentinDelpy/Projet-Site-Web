@@ -23,6 +23,9 @@ public class Customer {
     public Customer() {
        
     }
+    public int getID(){
+        return ID;
+    }
     public void setID(int id){
         this.ID = id;
     }

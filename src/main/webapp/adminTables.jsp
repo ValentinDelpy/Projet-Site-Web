@@ -114,14 +114,15 @@
                                                     </thead>
                                                     <tbody>
                                                         
-                                                    <c:forEach var="customer" items="${customers}">
-                                                        ${customer}
+                                                    <c:forEach var="cust" items="${customers}">
+                                                        
                                                         <tr>
-                                                            <td>${customer.CUTSOMER_ID}</td>
-                                                            <td>${customer.NAME}</td> 
-                                                            <td>${customer.ADRESSLINE1}</td> 
-                                                            <td>${customer.STATE}</td>
-                                                            <td>${customer.CREDIT_LIMIT}</td>
+                                                            <td>${cust.ID}</td>
+                                                            <td>${cust.name}</td> 
+                                                            <td>${cust.addressline1}</td> 
+                                                            <td>${cust.state}</td>
+                                                            <td>${cust.credit}</td>
+                                                            
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>

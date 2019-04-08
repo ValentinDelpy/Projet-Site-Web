@@ -317,7 +317,7 @@ public class DAO {
         int ret = 0;
         String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, SHIPPING_DATE) VALUES (?, ?, ?, ?, ?)";
         if (checkBuying(id, product_id, quantity) == true) {
-            substractMoney(id, price(id, product_id, quantity));
+            this.substractMoney(id, price(id, product_id, quantity));
             try (Connection connection = myDataSource.getConnection();
                     PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setInt(1, generateOrderNum());
@@ -336,7 +336,7 @@ public class DAO {
     public int deletePurchaseOrder(int order_num) throws SQLException {
         int ret = 0;
 
-        addMoney(this.CustomerIdByOrderNum(order_num), this.price(this.ancienneQuantite(order_num), this.prodId(order_num), this.CustomerIdByOrderNum(order_num)));
+        this.addMoney(this.CustomerIdByOrderNum(order_num), this.price(this.ancienneQuantite(order_num), this.prodId(order_num), this.CustomerIdByOrderNum(order_num)));
 
         String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -383,7 +383,7 @@ public class DAO {
                 String descritpion = rs.getString("DESCRIPTION");
                 PurchaseOrder po = new PurchaseOrder(code, idCust, quantity);
                 po.setDESCRIPTION(descritpion);
-                System.out.println("ici le prix : " + cost);
+                System.out.println("ici le prix unitaire : " + cost);
                 po.setCOST(cost);
                 po.setSHIPPING_DATE(date);
                 result.add(po);
