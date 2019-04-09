@@ -112,7 +112,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession(true); // démarre la session
             session.setAttribute("userName", "admin");
             session.setAttribute("customers",dao.allCustomers());
-            
+            session.setAttribute("produit", dao.allProducts());
         } else if (!"".equals(loginParam) && !"".equals(passwordParam)) {
             Customer c = dao.selectCustomerByMail(loginParam);
             // Le login/password défini dans les propiétés du customer
@@ -135,6 +135,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
                 session.setAttribute("commandes", dao.customerCommandes(c));  
+                session.setAttribute("produit", dao.allProducts());
                 
                 ArrayList<String> des = dao.allProduct2();
                 request.setAttribute("listeProduits", des);

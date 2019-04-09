@@ -11,6 +11,7 @@ model\ProductCode.class
 servlet\AdminController.class
 model\DataSourceFactory.class
 servlet\AdminTableController.class
+servlet\AdminControl.class
 model\Product.class
 model\Manufacturer.class
 model\MicroMarket.class

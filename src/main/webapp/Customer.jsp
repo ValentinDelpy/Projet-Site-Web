@@ -22,8 +22,7 @@
             <div id="sidebar">
                 <div class="sidebar-header">
                     <h3>${userName}</h3>
-                    <p class="description text-center"> "Le plein de fraîcheur <br>
-                                    et d'économies" <br>
+                    <p class="description text-center"> Ici c'est presque gratuit <br>
 
                                 </p>
                                 <c:forEach var="item" items="${codes}">
@@ -38,7 +37,7 @@
                         <div><h4>${message}</h4></div>
                     </li>
                     <li>
-                        <a href="#">Liste des produits</a>
+                        <a href=".\product.jsp">Liste des produits</a>
                     </li>
                     <li>
                         <form class="logout" action="LoginController" method="POST">
