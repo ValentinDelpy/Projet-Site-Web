@@ -2,13 +2,50 @@
     display: flex;
     align-items: stretch;
 }
-
+.alert{
+    display: none;
+}
+.description{
+    color:black;
+}
+.centrer{
+    text-align: center;
+}
+.submit{
+    display: block;
+    display: inline-block;
+    margin: 4px auto 0;
+}
+#headcommands{
+    padding: 10px;
+}
+.card{
+    padding: 10px;
+}
+.borderingit{
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 1px 1px 12px #555;
+    border-radius: 5px;
+    padding:5px;
+}
+.table th{
+    border-top: none !important;
+}
 #sidebar {
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
+    -moz-box-shadow: 10px 0px 5px #656565;
+    -webkit-box-shadow: 10px 0px 5px #656565;
+    -o-box-shadow: 10px 0px 5px #656565;
+    box-shadow: 1px 1px 12px #555;
 }
 
+.corps{
+    min-width: 70%;
+    max-width: 100%;
+}
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 

@@ -183,9 +183,7 @@ public class CustomerController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            
-            System.out.println("salr je suce oui oui pioipipiopiohoofauhouaegvoiaehbvoilqejnvlezuhn");
-            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
      

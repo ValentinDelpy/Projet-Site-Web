@@ -30,31 +30,36 @@
     </head>
     <body>
         <div class="wrapper ">
-
             <div id="sidebar">
                 <div class="sidebar-header">
-                    <h3>${userName}</h3>
-                    <p class="description text-center"> Ici c'est presque gratuit <br>
 
-                    </p>
-                    <c:forEach var="item" items="${codes}">
-                        <p class="description text-center"> Vous possedez un le code de réduction suivant : "${item.discountCode}"</p>
-                        <p class="description text-center"> Il vous donne accès à  : ${item.rate}% de réduction sur votre commande</p>
-                    </c:forEach>
+                    <h3 class="text-center">${userName}</h3>
+                    <hr/>
+                    <div class="borderingit">
+                        <p class="description text-center"> Ici c'est presque gratuit <br>
+
+                        </p>
+                        <c:forEach var="item" items="${codes}">
+                            <p class="description text-center"> Vous possedez un le code de réduction suivant : "${item.discountCode}"</p>
+                            <p class="description text-center"> Il vous donne accès à  : ${item.rate}% de réduction sur votre commande</p>
+                        </c:forEach>
+                    </div>
                 </div>
-
+                <hr/>
                 <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href=".\Customer.jsp">Profil</a>
+                    <li>
+                        <a href=".\Customer.jsp" class="text-center">Profil</a>
                         <div><h4>${message}</h4></div>
                     </li>
-                    <li>
-                        <a href=".\product.jsp">Liste des produits</a>
+                    <li class="active">
+                        <a href="#" class="text-center">Liste des produits</a>
                     </li>
                     <li>
-                        <form class="logout" action="LoginController" method="POST">
-                            <input class="btn btn-light" type='submit' name='action' value='DECONNEXION'>
-                        </form>
+                        <div class="centrer">
+                            <form class="logout" action="LoginController" method="POST">
+                                <input class="btn btn-light submit" display='block' type='submit' name='action' value='DECONNEXION'>
+                            </form>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -62,11 +67,10 @@
                 <div class="card card-plain">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title mt-0"> Liste des produits</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
+                        <div class="table-responsive ">
+                            <table class="table table-hover ">
                                 <thead class="">
                                 <th>
                                     ID
@@ -77,18 +81,13 @@
                                 <th>
                                     Price
                                 </th>
-
                                 </thead>
                                 <tbody>
                                 <c:forEach var="prod" items="${produit}">
-
-
                                     <tr>
                                         <td>${prod.productId}</td>
                                         <td>${prod.description}</td>
                                         <td>${prod.purchaseCost}</td>
-
-
                                     </tr>
                                 </c:forEach>
                                 </tbody>
