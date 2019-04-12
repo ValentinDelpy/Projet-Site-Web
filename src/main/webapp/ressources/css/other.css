@@ -21,7 +21,16 @@
 }
 .card{
     padding: 10px;
+    margin: 10px;
 }
+
+#productstable{
+    margin: 10px;
+}
+.card:hover{
+    box-shadow: 1px 1px 12px lightgray;
+}
+
 .borderingit{
     background-color: white;
     border: 1px solid white;

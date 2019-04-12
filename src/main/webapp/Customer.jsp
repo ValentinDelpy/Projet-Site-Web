@@ -55,42 +55,39 @@
             </div>
             <div class="container corps">
                 <div class="row">
-                    <div class="col-12">
-                                <div class="card">
-                                    <div class="header">
-                                        <h4 class="title">Effectuer une commande : </h4>
+                    <div class="col col-xl-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Effectuer une commande : </h4>
+                            </div>
+                            <form class="form-inline col-4" method='POST' action="customerController">
+                                <div class="form-group">
+                                    <div class="col-6">
+                                        <label>Produit </label>
                                     </div>
-                                    <div class="content">
-                                        <form method='POST' action="customerController">
-                                            <div class="row">
-                                                    <div class="form-group">
-                                                        <label>Produit</label>
-                                                        <br>
-                                                        <select name="produit" class="select-custom selectpicker">
-                                                            <c:forEach var="item" items="${listeProduits}">
-                                                                <option value="${item}">${item}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Quantité</label>
-                                                        <input type="text" class="form-control" placeholder="Quantite" value="" name="quantite">
-                                                        <input type="hidden" name="action" value="ADD_COMMANDE">
-                                                    </div>
-                                                    <div class="form-group ">
-                                                        <button type="submit" class="btn btn-info btn-fill pull-right">Ajouter</button>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </form>
+                                    <div class="col-6">
+                                        <select name="produit" class="select-custom selectpicker">
+                                            <c:forEach var="item" items="${listeProduits}">
+                                                <option value="${item}">${item}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Quantité</label>
+                                    <input type="text" class="form-control" placeholder="Quantite" value="" name="quantite">
+                                    <input type="hidden" name="action" value="ADD_COMMANDE">
+                                    <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-xl-6">
                         <div class="card" style="size: 20%">
-                                                                <div class="header">
-                                        <h4 class="title">Votre solde : </h4>
-                                    </div>
+                            <div class="header">
+                                <h4 class="title">Votre solde : </h4>
+                            </div>
                             <form class="form-inline" method='POST' action="CustomerController">
                                 <div class="form-group mb-2">
                                     <fmt:setLocale value = "en_US"/>
@@ -107,8 +104,8 @@
                     </div>
                 </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card" >
                             <div class="header" id="headcommands">
                                 <h4 class="title">Liste de vos commandes</h4>
@@ -117,14 +114,14 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped table-sm">
                                     <thead>
-                                        <th>ID</th>
-                                        <th>Numéro de commande</th>
-                                        <th>Quantité</th>
-                                        <th>Modifier</th>
-                                        <th>Prix Total</th>
-                                        <th>Type de produit</th>
-                                        <th>Date</th>
-                                        <th>Effacer</th>
+                                    <th>ID</th>
+                                    <th>Numéro de commande</th>
+                                    <th>Quantité</th>
+                                    <th>Modifier</th>
+                                    <th>Prix Total</th>
+                                    <th>Type de produit</th>
+                                    <th>Date</th>
+                                    <th>Effacer</th>
                                     </thead>
                                     <tbody>
                                         <c:forEach var="comm" items="${commandes}">
@@ -137,13 +134,13 @@
                                                 <input hidden name="purchaseToEdit" id="${comm.ORDER_NUM}" type="text" class="validate" value="${comm.ORDER_NUM}">
                                                 <p name="purchaseToEdit" value="${comm.ORDER_NUM}">${comm.ORDER_NUM}</p>
                                             </td>
-                                            <td >q
+                                            <td >
                                                 <input name="quantityToEdit" id="${comm.QUANTITY}" type="text" class="validate" value ="${comm.QUANTITY}">
                                                 <input type="hidden" name="action" value="EDIT_COMMANDE">
                                             </td>
 
                                             <td>
-                                                <button type="submit" class="btn btn-info btn-fill pull-left">Edit <i class="fa fa-pencil"></i></button>
+                                                <button type="submit" class="btn btn-primary mb-2">Edit <i class="fa fa-pencil"></i></button>
 
                                             </td>
                                         </form>
@@ -163,7 +160,7 @@
                                             <td>
                                                 <input hidden name="purchaseToDelete" id="${comm.ORDER_NUM}" type="text" class="validate" value="${comm.ORDER_NUM}">
                                                 <input type="hidden" name="action" value="DELETE_COMMANDE">
-                                                <button type="submit" class="btn btn-info btn-fill pull-left" name="action" value="DELETE_COMMANDE">Delete <i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-primary mb-2" name="action" value="DELETE_COMMANDE">Delete <i class="fa fa-trash"></i></button>
 
                                                 </a>
                                             </td>
