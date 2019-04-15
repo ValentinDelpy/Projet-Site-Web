@@ -27,10 +27,15 @@
 #productstable{
     margin: 10px;
 }
+
+
 .card:hover{
     box-shadow: 1px 1px 12px lightgray;
 }
 
+.card-header-primary{
+    background-color: blue;
+}
 .borderingit{
     background-color: white;
     border: 1px solid white;
@@ -118,4 +123,8 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
+}
+card-header-info{
+     background-color: #1E7FCB;
+     color: white;
 }

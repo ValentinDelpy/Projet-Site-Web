@@ -54,7 +54,7 @@ public class AdminTableController extends HttpServlet {
                     ArrayList<Customer> listeClients = (ArrayList<Customer>) dao.allCustomers();
                     session.setAttribute("listeClients", listeClients);
                     request.getRequestDispatcher("adminTables.jsp").forward(request, response);
-                break;
+                    break;
             }
 
         } catch (Exception ex) {

@@ -30,7 +30,7 @@
                 -->
                 <div class="logo">
                     <a class="simple-text logo-normal">
-                        Admin global view
+                        Panel administrateur
                     </a>
                 </div>
                 <div class="sidebar-wrapper">
@@ -38,18 +38,18 @@
                         <li class="nav-item active  ">
                             <a class="nav-link" href="#0">
                                 <i class="material-icons">dashboard</i>
-                                <p>Dashboard</p>
+                                <p>Tableau de bord</p>
                             </a>
                         <li class="nav-item ">
                             <a class="nav-link" href="./adminTables.jsp">
                                 <i class="material-icons">content_paste</i>
-                                <p>Table List</p>
+                                <p>Listes de références</p>
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="./ajoutDiscount.jsp">
                                 <i class="material-icons">eject</i>
-                                <p>Disconnect</p>
+                                <p>Deconnexion</p>
                             </a>
                         </li>
                         <!-- your sidebar here -->

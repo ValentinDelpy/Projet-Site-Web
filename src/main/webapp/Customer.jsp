@@ -39,7 +39,7 @@
                 <ul class="list-unstyled components">
                     <li class="active">
                         <a href="#" class="text-center">Profil</a>
-                        <div><h4>${message}</h4></div>
+
                     </li>
                     <li>
                         <a href=".\product.jsp" class="text-center">Liste des produits</a>
@@ -52,6 +52,8 @@
                         </div>
                     </li>
                 </ul>
+                <div><h4>${message}</h4></div>
+                <hr/>
             </div>
             <div class="container corps">
                 <div class="row">
@@ -60,7 +62,7 @@
                             <div class="header">
                                 <h4 class="title">Effectuer une commande : </h4>
                             </div>
-                            <form class="form-inline col-4" method='POST' action="customerController">
+                            <form class="form-inline col-4" method='POST' action="CustomerController">
                                 <div class="form-group">
                                     <div class="col-6">
                                         <label>Produit </label>
@@ -77,7 +79,7 @@
                                     <label>Quantité</label>
                                     <input type="text" class="form-control" placeholder="Quantite" value="" name="quantite">
                                     <input type="hidden" name="action" value="ADD_COMMANDE">
-                                    <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                                    <button type="submit" class="btn btn-primary mb-2 pop-up-button">Ajouter</button>
                                 </div>
                                 <div class="clearfix"></div>
                             </form>
@@ -161,12 +163,11 @@
                                                 <input hidden name="purchaseToDelete" id="${comm.ORDER_NUM}" type="text" class="validate" value="${comm.ORDER_NUM}">
                                                 <input type="hidden" name="action" value="DELETE_COMMANDE">
                                                 <button type="submit" class="btn btn-primary mb-2" name="action" value="DELETE_COMMANDE">Delete <i class="fa fa-trash"></i></button>
+                                                <span class="popuptext" id="myPopup">Commande supprimée.</span>
 
                                                 </a>
                                             </td>
                                         </form>
-
-
                                         </tr>
                                     </c:forEach> 
                                     </tbody>
@@ -206,5 +207,7 @@
             });
 
         });
+
+
     </script>
 </html>

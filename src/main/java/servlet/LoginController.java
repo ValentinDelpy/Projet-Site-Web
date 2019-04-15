@@ -111,7 +111,7 @@ public class LoginController extends HttpServlet {
             // On stocke l'information dans la session
             HttpSession session = request.getSession(true); // démarre la session
             session.setAttribute("userName", "admin");
-            session.setAttribute("customers",dao.allCustomers());
+            session.setAttribute("customers", dao.allCustomers());
             session.setAttribute("produit", dao.allProducts());
         } else if (!"".equals(loginParam) && !"".equals(passwordParam)) {
             Customer c = dao.selectCustomerByMail(loginParam);
@@ -124,7 +124,7 @@ public class LoginController extends HttpServlet {
 
             // si le mail et le mdp correspondent alors on peut se connecter
             if ((login.equals(loginParam) && (password.equals(passwordParam)))) {
-                
+
                 System.out.println("---------------_____________");
                 // On a trouvé la combinaison login / password
                 // On stocke l'information dans la session
@@ -134,14 +134,14 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userPassword", password);
                 session.setAttribute("userAddress", address);
                 session.setAttribute("userPhone", phone);
-                session.setAttribute("commandes", dao.customerCommandes(c));  
+                session.setAttribute("commandes", dao.customerCommandes(c));
                 session.setAttribute("produit", dao.allProducts());
-                
+
                 ArrayList<String> des = dao.allProduct2();
                 request.setAttribute("listeProduits", des);
                 Double solde = dao.soldeClient(Integer.parseInt(password));
-                System.out.println("---------------"+solde);
-                
+                System.out.println("---------------" + solde);
+
                 session.setAttribute("solde", solde);
                 session.setAttribute("codes", viewCodes(request));
             } else if (login.equals("nodata")) {
@@ -167,16 +167,16 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession(false);
         return (session == null) ? null : (String) session.getAttribute("userName");
     }
-    
-                 public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
-            List<DiscountCode> result = new LinkedList<>();
-            DAO dao= new DAO();
-            HttpSession session = request.getSession();
-            String password = ((String)session.getAttribute("userPassword"));
-            Customer c = new Customer();
-            c.setPassword(password);
-            result = dao.customerCodes(c);         
-            
-            return result;
+
+    public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
+        List<DiscountCode> result = new LinkedList<>();
+        DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        String password = ((String) session.getAttribute("userPassword"));
+        Customer c = new Customer();
+        c.setPassword(password);
+        result = dao.customerCodes(c);
+
+        return result;
     }
 }

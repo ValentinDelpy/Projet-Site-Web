@@ -218,7 +218,6 @@ public class DAO {
     }
 
     //Retourne la liste de tous les clients.
-
     public List<Customer> allCustomers() throws SQLException {
         ArrayList<Customer> myCustomers = new ArrayList<>();
         String sql = "SELECT * FROM CUSTOMER";
@@ -232,12 +231,12 @@ public class DAO {
                 c.setName("NaN");
                 myCustomers.add(c);
             } else {
-                
+
                 while (rs.next()) {
                     String email = rs.getString("EMAIL");
                     Customer c = new Customer(email);
                     c.setID(rs.getInt("CUSTOMER_ID"));
-                    
+
                     c.setCity(rs.getString("CITY"));
                     c.setCredit(rs.getInt("CREDIT_LIMIT"));
                     c.setName(rs.getString("NAME"));
@@ -275,7 +274,7 @@ public class DAO {
         return c;
     }
 
-    public double price(int id, int product_id, int quantity) throws SQLException { 
+    public double price(int id, int product_id, int quantity) throws SQLException {
         double result = 0;
         String sql = "SELECT PURCHASE_COST FROM PRODUCT WHERE PRODUCT_ID = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -283,11 +282,10 @@ public class DAO {
             stmt.setInt(1, product_id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                result = ((rs.getDouble("PURCHASE_COST") * quantity)*(100-customerRate(id))/100)
-;
+                result = ((rs.getDouble("PURCHASE_COST") * quantity) * (100 - customerRate(id)) / 100);
                 System.out.println(rs.getDouble("PURCHASE_COST"));
                 System.out.println(result);
-                System.out.println("____________________---------------______________"+result+"kkkkkkkkk"+quantity);
+                System.out.println("____________________---------------______________" + result + "kkkkkkkkk" + quantity);
             }
         }
         return result;
@@ -322,7 +320,6 @@ public class DAO {
     }
 
     //Permet de créer une commande.
-
     public int addPurchaseOrder(int id, int product_id, int quantity) throws SQLException {
         int ret = 0;
         String sql = "INSERT INTO PURCHASE_ORDER (ORDER_NUM, CUSTOMER_ID, PRODUCT_ID, QUANTITY, SHIPPING_DATE) VALUES (?, ?, ?, ?, ?)";
@@ -388,7 +385,7 @@ public class DAO {
                 int idCust = rs.getInt("CUSTOMER_ID");
                 int quantity = rs.getInt("QUANTITY");
                 int product = rs.getInt("PRODUCT_ID");
-                 double cost = price(idCust, product, quantity); 
+                double cost = price(idCust, product, quantity);
                 Date date = rs.getDate("SHIPPING_DATE");
                 String descritpion = rs.getString("DESCRIPTION");
                 PurchaseOrder po = new PurchaseOrder(code, idCust, quantity);
@@ -400,7 +397,6 @@ public class DAO {
 
             }
         }
-
         return result;
     }
 
@@ -458,7 +454,6 @@ public class DAO {
 
     public int ancienneQuantite(int order_num) throws SQLException {
         int res = 0;
-
         String sql = "SELECT QUANTITY FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -509,8 +504,8 @@ public class DAO {
 
         return result;
     }
-    
-     public int prodId(int order_num) throws SQLException {
+
+    public int prodId(int order_num) throws SQLException {
         int res = 0;
 
         String sql = "SELECT PRODUCT_ID FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
@@ -537,7 +532,8 @@ public class DAO {
         }
         return result;
     }
-        public double getCost(int product_id) throws SQLException {
+
+    public double getCost(int product_id) throws SQLException {
         double result = 0;
         String sql = "SELECT PURCHASE_COST FROM PRODUCT WHERE PRODUCT_ID = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -550,7 +546,7 @@ public class DAO {
             }
         }
         return result;
-        }
+    }
 
     public int nbClients() throws SQLException {
         int result = 0;
@@ -590,8 +586,8 @@ public class DAO {
         }
         return result;
     }
-    
-        public String descProduct(int product_id) throws SQLException {
+
+    public String descProduct(int product_id) throws SQLException {
         String ret = "";
         String sql = "SELECT DESCRIPTION FROM PRODUCT WHERE PRODUCT_ID = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -603,12 +599,10 @@ public class DAO {
 
             }
         }
-
         return ret;
     }
-        
-        
-            public String nameCustomer(int id) throws SQLException {
+
+    public String nameCustomer(int id) throws SQLException {
         String ret = "";
         String sql = "SELECT NAME FROM CUSTOMER WHERE CUSTOMER_ID = ?";
         try (Connection connection = myDataSource.getConnection();
@@ -620,12 +614,10 @@ public class DAO {
 
             }
         }
-
         return ret;
     }
-        
-    
-public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throws SQLException {
+
+    public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throws SQLException {
         Map<String, Double> ret = new HashMap<>();
         String sql = "SELECT PRODUCT_ID, SUM(QUANTITY) AS SALES FROM PURCHASE_ORDER"
                 + " WHERE SHIPPING_DATE BETWEEN ? AND ?"
@@ -667,11 +659,11 @@ public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throw
     }
 
     /**
-     * 
+     *
      * @param deb date de début de l'analyse
      * @param fin date de fin de l'analyse
      * @return le chiffre d'affaires effectué par client
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Map<String, Double> chiffreAffaireByCustomer(String deb, String fin) throws SQLException {
         Map<String, Double> ret = new HashMap<>();
@@ -720,11 +712,11 @@ public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throw
     }
 
     /**
-     * 
+     *
      * @param deb date de début d'analyse
-     * @param fin date de fin d'analyse 
+     * @param fin date de fin d'analyse
      * @return le chiffre d'affaires représenté par état
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Map<String, Double> chiffreAffaireByState(String deb, String fin) throws SQLException {
         Map<String, Double> ret = new HashMap<>();
@@ -775,11 +767,12 @@ public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throw
     }
 
     /**
-     * 
+     *
      * @param deb date de début d'analyse
      * @param fin date de fin d'analyse
-     * @return le chiffre d'affaires de l'entreprise effectué par rapport au produit (à leur code)
-     * @throws SQLException 
+     * @return le chiffre d'affaires de l'entreprise effectué par rapport au
+     * produit (à leur code)
+     * @throws SQLException
      */
     public Map<String, Double> chiffreAffaireByProductCode(String deb, String fin) throws SQLException {
         Map<String, Double> ret = new HashMap<>();
@@ -832,11 +825,11 @@ public Map<String, Double> chiffreAffaireByProduct(String deb, String fin) throw
     }
 
     /**
-     * 
+     *
      * @param deb date de début d'analyse
      * @param fin date de fin d'analyse
      * @return le chiffre d'affaires de l'entreprise en fonction du code postal
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Map<String, Double> chiffreAffaireByZip(String deb, String fin) throws SQLException {
         Map<String, Double> ret = new HashMap<>();

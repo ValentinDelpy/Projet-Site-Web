@@ -63,45 +63,41 @@
                     </li>
                 </ul>
             </div>
-                            <div class="col-xl-10 col-sm-8">
-                                <div class="card card-plain">
-                                    <div class="card-header card-header-primary">
-                                        <h4 class="card-title mt-0"> Liste des produits</h4>
-                                        <p class="card-category"> Here is a subtitle for this table</p>
-                                    </div>
-                                    <div class="card-body" id="productstable">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead class="">
-                                                <th>
-                                                    ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Price
-                                                </th>
-                                                
-                                                </thead>
-                                                <tbody>
-                                                <c:forEach var="prod" items="${produit}">
-                                                        
-                                                        
-                                                        <tr>
-                                                            <td>${prod.productId}</td>
-                                                            <td>${prod.description}</td>
-                                                            <td>${prod.purchaseCost}</td>
-                                                            
-                                                            
-                                                        </tr>
-                                                    </c:forEach>
-                                                    </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="col-xl-10 col-sm-8">
+                <div class="card card-plain">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title mt-0"> Liste des produits</h4>
+                    </div>
+                    <div class="card-body" id="productstable">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="prod" items="${produit}">
+
+                                        <tr>
+                                            <td>${prod.productId}</td>
+                                            <td>${prod.description}</td>
+                                            <td>${prod.purchaseCost}</td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

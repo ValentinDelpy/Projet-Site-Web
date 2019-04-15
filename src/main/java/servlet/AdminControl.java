@@ -45,16 +45,15 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         String date_debut_cat = request.getParameter("date_debut_cat");
         String date_fin_cat = request.getParameter("date_fin_cat");
 
-        // Ca par Geo
+        // pour le Ca par Geo
         String date_debut_geo = request.getParameter("date_debut_geo");
         String date_fin_geo = request.getParameter("date_fin_geo");
 
-        // Ca par Client
+        // pour le Ca par Client
         String date_debut_cli = request.getParameter("date_debut_cli");
         String date_fin_cli = request.getParameter("date_fin_cli");
         
-        
-        // Ca par ZIP (zone géo)
+        // pour le Ca par ZIP (zone géo)
         String date_debut_zip = request.getParameter("date_debut_zip");
         String date_fin_zip = request.getParameter("date_fin_zip");
 

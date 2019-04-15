@@ -50,7 +50,7 @@ public class CustomerController extends HttpServlet {
         //Pour éditer des commandes
         String purchaseToEdit = request.getParameter("purchaseToEdit");
 
-        // infos client
+        //Informations du client.
         Double solde = dao.soldeClient(Integer.parseInt(password));
         session.setAttribute("solde", solde);
 
@@ -66,7 +66,7 @@ public class CustomerController extends HttpServlet {
                 case "ADD_COMMANDE": // Requête d'ajout (vient du formulaire de saisie)
                     dao.addPurchaseOrder(Integer.parseInt(password), dao.numProduct(request.getParameter("produit")), Integer.parseInt(quantite));
                     session.setAttribute("commandes", dao.customerCommandes(c));
-                    
+
                     solde = dao.soldeClient(Integer.parseInt(password));
                     session.setAttribute("solde", solde);
                     request.setAttribute("message", "Commande de " + quantite + " '" + request.getParameter("produit") + "'" + " réalisée.");
@@ -116,9 +116,9 @@ public class CustomerController extends HttpServlet {
                         session.setAttribute("solde", solde);
                         request.setAttribute("message", "Virement de : " + montant + "$ réalisé sur votre compte.");
                         request.getRequestDispatcher("Customer.jsp").forward(request, response);
-                        
+
                     } catch (SQLIntegrityConstraintViolationException e) {
-                            
+
                     }
                     break;
 
@@ -138,8 +138,7 @@ public class CustomerController extends HttpServlet {
             request.setAttribute("message", ex.getMessage());
         }
 
-        // Est-ce que l'utilisateur est connecté ?
-        
+        //Vérification de connexion
         request.getRequestDispatcher("Customer.jsp").forward(request, response);
     }
 
@@ -152,58 +151,55 @@ public class CustomerController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    	private String findUserInSession(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		return (session == null) ? null : (String) session.getAttribute("userName");
-	}
-    
-      @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+    private String findUserInSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return (session == null) ? null : (String) session.getAttribute("userName");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
-	}
+    }
 
-	/**
-	 * Handles the HTTP <code>POST</code> method.
-	 *
-	 * @param request servlet request
-	 * @param response servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-                Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
-     
-     
-     
-        
-        private void supprimerCode(String code) throws SQLException {
-		DAO dao = new DAO();
-                dao.deleteDiscountCode(code);
-		
-	}
-                 public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
-            List<DiscountCode> result = new LinkedList<>();
-            DAO dao= new DAO();
-            HttpSession session = request.getSession();
-            String password = ((String)session.getAttribute("userPassword"));
-            Customer c = new Customer();
-            c.setPassword(password);
-            result = dao.customerCodes(c);         
-            
-            return result;
+    }
+
+    private void supprimerCode(String code) throws SQLException {
+        DAO dao = new DAO();
+        dao.deleteDiscountCode(code);
+
+    }
+
+    public List<DiscountCode> viewCodes(HttpServletRequest request) throws SQLException {
+        List<DiscountCode> result = new LinkedList<>();
+        DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        String password = ((String) session.getAttribute("userPassword"));
+        Customer c = new Customer();
+        c.setPassword(password);
+        result = dao.customerCodes(c);
+
+        return result;
     }
 }
