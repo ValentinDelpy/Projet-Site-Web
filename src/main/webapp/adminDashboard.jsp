@@ -351,8 +351,8 @@
                 labels: label,
                 datasets: [{
                         label: "CA par Produit en $, ${dateProduct}.",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(138,43,226)',
+                        borderColor: 'rgb(138,43,226)',
                         data: ca,
                     }]
             },
@@ -381,8 +381,8 @@
                 labels: label,
                 datasets: [{
                         label: "CA par zone Géographique en $, ${dateGeo}",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(138,43,226)',
+                        borderColor: 'rgb(138,43,226)',
                         data: ca,
                     }]
             },
@@ -411,8 +411,8 @@
                 labels: label,
                 datasets: [{
                         label: "CA par Client en $, ${dateCli}",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(138,43,226)',
+                        borderColor: 'rgb(138,43,226))',
                         data: ca,
                     }]
             },
@@ -441,8 +441,8 @@
                 labels: label,
                 datasets: [{
                         label: "CA par catégorie d'article en $, ${dateProductCode}",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(138,43,226)',
+                        borderColor: 'rgb(138,43,226)',
                         data: ca,
                     }]
             },
@@ -471,8 +471,8 @@
                 labels: label,
                 datasets: [{
                            label: "CA par code postal en $, ${dateZip}",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(138,43,226)',
+                        borderColor: 'rgb(138,43,226))',
                         data: ca,
                     }]
             },
