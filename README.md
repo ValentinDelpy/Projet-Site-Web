@@ -32,7 +32,7 @@ Pour l'affichage des graphiques, on utilisera la bibliothèque javascript ChartJ
 Livrable
 Vous devez fournir un projet maven, déposé sur un dépôt github. Ce projet doit être téléchargeable par git clone et immédiatement exécutable sous netbeans. Les contributions des différents membres du groupe doivent être clairement visibles via l'historique des "commits".
 <pre>Sur GitHub les nom utilisé pour commit sont :
-  - Mark pour Amaury Goncalves de Carvalho.
+  - Mark ou amaurygdc pour Amaury Goncalves de Carvalho.
   - ValentinDelpy pour Valentin Delpy.
   - BrynaCurtISIS pour Bryan Curt.</pre>
 
