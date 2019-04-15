@@ -64,16 +64,12 @@
                             </div>
                             <form class="form-inline col-4" method='POST' action="CustomerController">
                                 <div class="form-group">
-                                    <div class="col-6">
                                         <label>Produit </label>
-                                    </div>
-                                    <div class="col-6">
                                         <select name="produit" class="select-custom selectpicker">
                                             <c:forEach var="item" items="${listeProduits}">
                                                 <option value="${item}">${item}</option>
                                             </c:forEach>
                                         </select>
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Quantité</label>
